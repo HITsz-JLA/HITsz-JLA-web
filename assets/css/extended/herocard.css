@@ -1,0 +1,99 @@
+/* Hero 卡片样式 */
+.hero-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background: #fff0f5; /* 淡樱花色背景 */
+    overflow: hidden; /* 防止花瓣跑出边界 */
+}
+
+.hero-inner {
+    background: rgba(255, 240, 245, 0.8); /* 半透明卡片效果 */
+    border-radius: 20px; /* 圆角 */
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); /* 柔和阴影 */
+    padding: 50px 40px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    animation: float 6s ease-in-out infinite; /* 浮动动画 */
+}
+
+/* 标题样式 */
+.hero-inner h1 {
+    font-size: 3rem;
+    color: #d1477f; /* 樱花粉色字体 */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.hero-inner h1:hover {
+    transform: scale(1.05); /* 鼠标悬停放大效果 */
+}
+
+/* 描述文字 */
+.hero-inner p {
+    font-size: 1.25rem;
+    color: #8b3a62; /* 深粉色 */
+    line-height: 1.6;
+}
+
+/* 浮动动画 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+        box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+    }
+    50% {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 30px rgba(255, 182, 193, 0.35);
+    }
+}
+
+/* 樱花动画 */
+.petals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 不挡住鼠标操作 */
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: pink;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+    .hero-inner {
+        padding: 30px 20px;
+    }
+    .hero-inner h1 {
+        font-size: 2rem;
+    }
+    .hero-inner p {
+        font-size: 1rem;
+    }
+}

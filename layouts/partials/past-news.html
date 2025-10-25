@@ -1,0 +1,31 @@
+{{/* 
+  partial: past-news.html
+  功能: 查询当前文章所在 Section 的历史文章，按 Date/Lastmod 排序
+*/}}
+
+{{ $allNews := where .Site.RegularPages "Section" "news" }}
+{{ $publishedNews := where $allNews "Draft" "!=" true }}
+{{ $otherNews := where $publishedNews "Permalink" "ne" .Permalink }}
+
+{{ $withDate := where $otherNews "Date" "!=" nil }}
+{{ $withoutDate := where $otherNews "Date" "==" nil }}
+
+{{ $sortedWithDate := sort $withDate ".Date" "desc" }}
+{{ $sortedWithoutDate := sort $withoutDate ".Lastmod" "desc" }}
+
+{{ $pastNews := $sortedWithDate | append $sortedWithoutDate }}
+
+<ul class="widget-list">
+  {{ range $pastNews }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ if .Date }}
+        <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ else if .Lastmod }}
+        <span class="post-date">{{ .Lastmod.Format "2006-01-02" }}</span>
+      {{ end }}
+    </li>
+  {{ else }}
+    <li>暂无过往公告</li>
+  {{ end }}
+</ul>

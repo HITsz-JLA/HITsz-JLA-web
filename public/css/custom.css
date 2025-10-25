@@ -1,0 +1,104 @@
+/* =================================
+   PaperMod 卡片自定义样式
+   ================================= */
+
+/* 1. 卡片容器布局 */
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;       
+  padding: 20px 10px; 
+}
+
+/* 2. 卡片样式 */
+/* 基础卡片样式 */
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(255,182,193,.2);
+  padding: 15px;
+  transition: transform .3s, box-shadow .3s, opacity .6s;
+  opacity: 0; /* 初始透明，等待动画触发 */
+}
+
+/* 宽度分类 */
+.card.small {
+  flex: 1 1 280px;
+  max-width: 350px;
+}
+
+.card.medium {
+  flex: 1 1 400px;
+  max-width: 500px;
+}
+
+.card.large {
+  flex: 1 1 600px;
+  max-width: 800px;
+}
+
+/* 3. 卡片标题 */
+.card h3 {
+  color: #d1477f;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+/* 4. 卡片内容 */
+.card .summary {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* 5. 查看更多按钮 */
+.card .more {
+  display: inline-block;
+  color: #d1477f;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.card .more:hover {
+  text-decoration: underline;
+}
+
+/* 6. 卡片悬浮效果 */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(255, 182, 193, 0.35);
+}
+
+.card-content {
+  max-height: 120px;       /* 首页卡片显示的最大高度 */
+  overflow: hidden;        /* 超出部分隐藏 */
+  text-overflow: ellipsis; /* 超出部分显示省略号 */
+}
+
+.card.small .card-content { max-height: 100px; }
+.card.medium .card-content { max-height: 150px; }
+.card.large .card-content { max-height: 200px; }
+
+
+/* 7. 响应式优化 */
+@media (max-width: 768px) {
+  .card-row {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .card {
+    width: 100%; /* 手机端单列 */
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card .summary {
+    font-size: 0.95rem;
+  }
+}

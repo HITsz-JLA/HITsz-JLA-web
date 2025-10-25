@@ -1,0 +1,40 @@
+/* event-detail 布局 */
+.event-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start; /* 顶部对齐 */
+}
+
+.event-article {
+  flex: 3;
+}
+
+.event-cover {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.past-events {
+  flex: 1;
+  max-width: 300px;
+  border-left: 1px solid #ddd;
+  padding-left: 1rem;
+}
+
+.past-event-item {
+  margin-bottom: 0.8rem;
+}
+
+.past-event-item a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.past-event-item small {
+  display: block;
+  color: #666;
+  font-size: 0.85rem;
+}

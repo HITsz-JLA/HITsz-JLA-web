@@ -1,0 +1,31 @@
+{{/* 
+  partial: past-events.html
+  功能: 查询当前文章所在 Section 的历史文章，按 Date/Lastmod 排序
+*/}}
+
+{{ $allEvents := where .Site.RegularPages "Section" "events" }}
+{{ $publishedEvents := where $allEvents "Draft" "!=" true }}
+{{ $otherEvents := where $publishedEvents "Permalink" "ne" .Permalink }}
+
+{{ $withDate := where $otherEvents "Date" "!=" nil }}
+{{ $withoutDate := where $otherEvents "Date" "==" nil }}
+
+{{ $sortedWithDate := sort $withDate ".Date" "desc" }}
+{{ $sortedWithoutDate := sort $withoutDate ".Lastmod" "desc" }}
+
+{{ $pastEvents := $sortedWithDate | append $sortedWithoutDate }}
+
+<ul class="widget-list">
+  {{ range $pastEvents }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ if .Date }}
+        <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ else if .Lastmod }}
+        <span class="post-date">{{ .Lastmod.Format "2006-01-02" }}</span>
+      {{ end }}
+    </li>
+  {{ else }}
+    <li>暂无过往活动</li>
+  {{ end }}
+</ul>

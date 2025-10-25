@@ -1,0 +1,23 @@
+{{ define "main" }}
+<main class="post-container">
+
+  <!-- 主体文章 -->
+  <article class="posts posts-card">
+
+    <!-- 文章标题 -->
+    <header class="posts-header">
+      <h1 class="posts-title">{{ .Title }}</h1>
+      {{ with .Date }}
+        <time class="posts-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+      {{ end }}
+    </header>
+
+    <!-- 正文内容 -->
+    <div class="posts-content">
+      {{ .Content }}
+    </div>
+
+  </article>
+
+</main>
+{{ end }}

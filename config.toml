@@ -1,0 +1,38 @@
+baseURL = "http://gura-service.online/"
+title = "HITsz日语社"
+theme = "PaperMod"
+defaultContentLanguage = "zh-cn"
+[languages] 
+	[languages.zh-cn]
+		languageName = "中文"
+		weight = 1
+	[languages.ja] 
+		languageName = "日本語"
+		weight = 2
+
+[params] 
+	defaultTheme = "light"
+	disableThemeToggle = false
+	ShowReadingTime = false 
+	description = "日本文化 × 言语"
+	customCSS = ["/css/custom.css"]
+
+
+
+[params.homeInfoParams]
+	Title = "🌸 ようこそ！HITSZ日语社へ"
+	Content = "ここでは私たちの活動・イベント・文化を紹介します。"
+
+[menu] 
+	[[menu.main]]
+		name = "关于我们"
+		url = "about"
+	[[menu.main]]
+		name = "活动"
+		url = "events"
+	[[menu.main]]
+		name = "公告"
+		url = "news"
+	[[menu.main]]
+		name = "加入我们"
+		url = "join"

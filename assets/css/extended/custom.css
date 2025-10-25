@@ -1,0 +1,120 @@
+/* =================================
+   PaperMod 卡片自定义样式（优化版）
+   ================================= */
+
+
+
+/* 1. 卡片容器布局 */
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;       
+  padding: 20px 10px; 
+}
+
+/* 2. 卡片基础样式 */
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(255,182,193,0.2);
+  padding: 16px;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s;
+  opacity: 0; /* 初始透明，等待动画触发 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. 卡片宽度分类 */
+.card.small {
+  flex: 1 1 280px;
+  max-width: 350px;
+}
+
+.card.medium {
+  flex: 1 1 400px;
+  max-width: 500px;
+}
+
+.card.large {
+  flex: 1 1 600px;
+  max-width: 800px;
+}
+
+
+/* 4. 卡片标题 */
+.card h2, .card h3 {
+  color: #d1477f;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card h2 { font-size: 1.6rem; }
+.card h3 { font-size: 1.4rem; }
+
+/* 5. 卡片正文内容 */
+.card .card-content,
+.card .summary {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+/* 6. 查看更多按钮 */
+.card .more {
+  display: inline-block;
+  color: #d1477f;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: auto; /* 按钮自动靠底 */
+  transition: color 0.2s;
+}
+
+.card .more:hover {
+  text-decoration: underline;
+  color: #a32b63;
+}
+
+/* 7. 卡片悬浮效果 */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(255,182,193,0.35);
+}
+
+/* data-animate 动画 */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .8s ease-out;
+}
+
+[data-animate].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 9. 响应式优化 */
+@media (max-width: 768px) {
+  .card-row {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .card.small, .card.medium, .card.large {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .card h2 { font-size: 1.4rem; }
+  .card h3 { font-size: 1.2rem; }
+
+  .card .card-content,
+  .card .summary {
+    font-size: 0.95rem;
+  }
+}

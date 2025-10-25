@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>HITsz日语社</title>
+    <link>http://gura-service.online/ja/</link>
+    <description>Recent content on HITsz日语社</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>ja</language>
+    <atom:link href="http://gura-service.online/ja/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+.sidebar.right-sidebar {
+  position: absolute;
+  right: -300px; /* 调整距离正文的偏移 */
+  width: 250px;
+  top: 0;
+}
+
+.right-sidebar ul.widget-list li {
+  border-left: 3px solid var(--theme-accent);
+}
+
+
+@media (max-width: 768px) {
+  .sidebar.right-sidebar {
+    position: relative; /* 取消绝对定位 */
+    right: 0;           /* 清除偏移 */
+    width: 100%;        /* 占满宽度 */
+    margin-top: 1rem;   /* 与主内容保持间距 */
+  }
+}
