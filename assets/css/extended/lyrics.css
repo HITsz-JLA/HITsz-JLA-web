@@ -84,3 +84,67 @@
 .music-buttons a:hover {
   background: #ff97b7;
 }
+
+/* ===== 手机响应 ===== */
+@media (max-width: 768px) {
+  .lyrics {
+    padding: 20px 10px;
+  }
+
+  .lyrics-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+  }
+
+  .lyrics-card {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 10px;
+  }
+
+  .lyrics-title {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+
+  .lyrics-date {
+    font-size: 12px;
+  }
+
+  .lyrics-content {
+    font-size: 14px;
+  }
+
+  .lyrics-content p {
+    margin-bottom: 10px;
+  }
+
+  .music-buttons a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .lyrics-content audio {
+    width: 100%;
+  }
+}
+
+/* ===== 更小屏幕 ===== */
+@media (max-width: 480px) {
+  .lyrics-title {
+    font-size: 20px;
+  }
+
+  .lyrics-content {
+    font-size: 13px;
+  }
+
+  .music-buttons a {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
