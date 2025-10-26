@@ -18,6 +18,30 @@
   line-height: 1.8;
 }
 
+/* lyrics header 横向排列 */
+.lyrics-header {
+  display: flex;
+  flex-direction: row;       /* 横向排列 */
+  align-items: center;       /* 垂直居中对齐 */
+  justify-content: space-between; /* 左右分散 */
+  gap: 16px;                 /* 元素间间距 */
+  flex-wrap: wrap;           /* 如果太宽自动换行 */
+  margin-bottom: 16px;
+}
+
+/* 标题和日期样式 */
+.lyrics-header .lyrics-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.lyrics-header .lyrics-date {
+  font-size: 14px;
+  color: #888;
+  white-space: nowrap;  /* 保持日期不换行 */
+}
+
 /* ===== 主体卡片 ===== */
 .lyrics-card {
   background: #fff;
@@ -85,6 +109,25 @@
   background: #ff97b7;
 }
 
+
+
+/* 手机响应调整 */
+@media (max-width: 768px) {
+  .lyrics-header {
+    flex-direction: row;  /* 保持横向 */
+    justify-content: flex-start; /* 左对齐 */
+    gap: 12px;
+  }
+
+  .lyrics-header .lyrics-title {
+    font-size: 22px;
+  }
+
+  .lyrics-header .lyrics-date {
+    font-size: 12px;
+  }
+}
+
 /* ===== 手机响应 ===== */
 @media (max-width: 768px) {
   .lyrics {
@@ -130,21 +173,5 @@
 
   .lyrics-content audio {
     width: 100%;
-  }
-}
-
-/* ===== 更小屏幕 ===== */
-@media (max-width: 480px) {
-  .lyrics-title {
-    font-size: 20px;
-  }
-
-  .lyrics-content {
-    font-size: 13px;
-  }
-
-  .music-buttons a {
-    padding: 6px 12px;
-    font-size: 13px;
   }
 }
