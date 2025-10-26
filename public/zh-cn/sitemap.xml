@@ -2,68 +2,68 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://gura-service.online/join/join/</loc>
+    <loc>http://localhost:1313/join/join/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/news/20251019ktv/</loc>
+    <loc>http://localhost:1313/news/20251019ktv/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/events/20251025houenkai/</loc>
+    <loc>http://localhost:1313/events/20251025houenkai/</loc>
     <lastmod>2025-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/events/</loc>
+    <loc>http://localhost:1313/events/</loc>
     <lastmod>2025-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-10-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://gura-service.online/ja/"
+                href="http://localhost:1313/ja/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://gura-service.online/"
+                href="http://localhost:1313/"
                 />
   </url><url>
-    <loc>http://gura-service.online/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/join/</loc>
+    <loc>http://localhost:1313/join/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/news/</loc>
+    <loc>http://localhost:1313/news/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/events/events/</loc>
+    <loc>http://localhost:1313/events/events/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/about/about/</loc>
+    <loc>http://localhost:1313/about/about/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://gura-service.online/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://gura-service.online/ja/categories/"
+                href="http://localhost:1313/ja/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://gura-service.online/categories/"
+                href="http://localhost:1313/categories/"
                 />
   </url><url>
-    <loc>http://gura-service.online/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://gura-service.online/ja/tags/"
+                href="http://localhost:1313/ja/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://gura-service.online/tags/"
+                href="http://localhost:1313/tags/"
                 />
   </url>
 </urlset>
