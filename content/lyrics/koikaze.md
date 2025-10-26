@@ -21,6 +21,7 @@ type: lyrics
   <a href="https://music.163.com/song?id=2690100940">网易云</a>
   <a href="https://y.qq.com/n/ryqq/songDetail/000FE7Xu21Oncj">QQ音乐</a>
 </div>
+<br>
 
 **いつかの恋の<ruby>後遺症<rt>こういしょう</ruby>で**  
 在昔日爱的后遗症里踌躇
