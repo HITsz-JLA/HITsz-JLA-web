@@ -66,7 +66,7 @@
 </section>
 {{ end }}
 
-<!-- 活动 -->
+<!-- 每周一曲 -->
 {{ $allLyrics := where .Site.RegularPages "Section" "lyrics" }}
 {{ $publishedLyrics := where $allLyrics "Draft" "!=" true }}
 {{ $sortedLyrics := sort $publishedLyrics ".Lastmod" "desc" }}

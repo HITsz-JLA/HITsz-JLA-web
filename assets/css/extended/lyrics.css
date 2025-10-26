@@ -1,3 +1,11 @@
+.lyrics {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background-color: #fff0f5; /* 淡粉色背景，可自定义 */
+}
+
 /* ===== 页面整体 ===== */
 .lyrics-container {
   display: flex;

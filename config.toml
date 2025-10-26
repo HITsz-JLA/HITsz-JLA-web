@@ -36,3 +36,7 @@ defaultContentLanguage = "zh-cn"
 	[[menu.main]]
 		name = "加入我们"
 		url = "join"
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

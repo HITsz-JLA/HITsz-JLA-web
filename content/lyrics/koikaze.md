@@ -1,13 +1,17 @@
 --- 
 title: "恋風 - 幾田りら"
-date: 2025-10-27
+date: 2025-10-26
 draft: false
----
+type: lyrics
+--- 
 
-![专辑封面](image/koikaze.jpg)
+![专辑封面](/image/koikaze.jpg)
+
+<!--more-->
 
 <center style="font-family: 'Microsoft YaHei', 'Yu Gothic', 'Meiryo', 'MS PGothic', sans-serif;">
 
+## 恋風 - 幾田りら
 #### 作曲: 幾田りら
 #### 作词: 幾田りら
 

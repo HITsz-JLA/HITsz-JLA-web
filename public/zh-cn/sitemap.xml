@@ -8,14 +8,8 @@
     <loc>http://jpa.guramod.club/news/20251019ktv/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/events/20251025houenkai/</loc>
-    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://jpa.guramod.club/events/</loc>
-    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://jpa.guramod.club/</loc>
-    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
@@ -26,6 +20,18 @@
                 hreflang="zh-cn"
                 href="http://jpa.guramod.club/"
                 />
+  </url><url>
+    <loc>http://jpa.guramod.club/lyrics/</loc>
+    <lastmod>2025-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://jpa.guramod.club/lyrics/koikaze/</loc>
+    <lastmod>2025-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://jpa.guramod.club/events/20251025houenkai/</loc>
+    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://jpa.guramod.club/events/</loc>
+    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://jpa.guramod.club/about/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
