@@ -1,0 +1,29 @@
+{{ define "main" }}
+<main class="lyrics-container">
+
+  <!-- 主体文章 -->
+  <article class="lyrics lyrics-card">
+
+    <!-- 文章标题 -->
+    <header class="lyrics-header">
+      <h1 class="lyrics-title">{{ .Title }}</h1>
+      {{ with .Date }}
+        <time class="lyrics-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+      {{ end }}
+    </header>
+
+    <!-- 正文内容 -->
+    <div class="lyrics-content">
+      {{ .Content }}
+    </div>
+
+  </article>
+
+  <!-- 右侧历史活动 -->
+  <aside class="sidebar right-sidebar">
+    <h3 class="sidebar-title">过往的每周一曲</h3>
+    {{ partial "past-lyrics.html" . }}
+  </aside>
+
+</main>
+{{ end }}

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Joins on HITsz日语社</title>
-    <link>http://localhost:1313/join/</link>
+    <link>http://jpa.guramod.club/join/</link>
     <description>Recent content in Joins on HITsz日语社</description>
-    <generator>Hugo -- 0.152.2</generator>
+    <generator>Hugo -- 0.146.0</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 19 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/join/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://jpa.guramod.club/join/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>加入我们</title>
-      <link>http://localhost:1313/join/join/</link>
+      <link>http://jpa.guramod.club/join/join/</link>
       <pubDate>Sun, 19 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/join/join/</guid>
+      <guid>http://jpa.guramod.club/join/join/</guid>
       <description>&lt;h2 id=&#34;-欢迎加入-hitsz-日语社-&#34;&gt;🌸 欢迎加入 HITsz 日语社 🌸&lt;/h2&gt;
 &lt;p&gt;如果你热爱日语、动漫、声优、日系文化， 或者只是想找一群志同道合的伙伴聊天、唱歌、玩游戏—— 那就来日语社吧！&lt;/p&gt;</description>
     </item>

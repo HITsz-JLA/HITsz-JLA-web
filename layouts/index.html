@@ -66,7 +66,31 @@
 </section>
 {{ end }}
 
+<!-- 活动 -->
+{{ $allLyrics := where .Site.RegularPages "Section" "lyrics" }}
+{{ $publishedLyrics := where $allLyrics "Draft" "!=" true }}
+{{ $sortedLyrics := sort $publishedLyrics ".Lastmod" "desc" }}
+{{ $latestLyrics := first 1 $sortedLyrics }}
 
+{{ range $latestLyrics }}
+<section class="card medium" data-animate>
+  <h2>每周一曲</h2>
+  <div class="card-content">
+    <strong>{{ .Title }}</strong>
+    {{ if .Summary }}
+      {{ .Summary | truncate 150 | safeHTML }}
+    {{ else }}
+      <p>暂无简介。</p>
+    {{ end }}
+  </div>
+  <a href="{{ .RelPermalink }}" class="more">查看详情 →</a>
+</section>
+{{ else }}
+<section class="card medium" data-animate>
+  <h2>每周一曲</h2>
+  <p class="card-content">暂无曲目。</p>
+</section>
+{{ end }}
 
 <!-- 联系方式 -->
 {{ $join := where .Site.RegularPages "Section" "join" | first 1 }}

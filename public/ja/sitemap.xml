@@ -2,40 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/ja/categories/</loc>
+    <loc>http://jpa.guramod.club/ja/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/categories/"
+                href="http://jpa.guramod.club/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/ja/categories/"
+                href="http://jpa.guramod.club/ja/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/ja/</loc>
+    <loc>http://jpa.guramod.club/ja/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/"
+                href="http://jpa.guramod.club/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/ja/"
+                href="http://jpa.guramod.club/ja/"
                 />
   </url><url>
-    <loc>http://localhost:1313/ja/tags/</loc>
+    <loc>http://jpa.guramod.club/ja/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/tags/"
+                href="http://jpa.guramod.club/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/ja/tags/"
+                href="http://jpa.guramod.club/ja/tags/"
                 />
   </url>
 </urlset>

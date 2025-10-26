@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Abouts on HITsz日语社</title>
-    <link>http://localhost:1313/about/</link>
+    <link>http://jpa.guramod.club/about/</link>
     <description>Recent content in Abouts on HITsz日语社</description>
-    <generator>Hugo -- 0.152.2</generator>
+    <generator>Hugo -- 0.146.0</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 19 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://jpa.guramod.club/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于我们</title>
-      <link>http://localhost:1313/about/about/</link>
+      <link>http://jpa.guramod.club/about/about/</link>
       <pubDate>Sun, 19 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/about/</guid>
+      <guid>http://jpa.guramod.club/about/about/</guid>
       <description>&lt;p&gt;HITSZ日语社成立于20XX年，是一个热爱日本语言与文化的学生社团。 我们定期举办KTV、观影、讲座、日语学习等活动，也欢迎零基础的同学加入！&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;一緒に楽しく日本語を勉強しましょう！&lt;/strong&gt;&lt;/p&gt;</description>
     </item>

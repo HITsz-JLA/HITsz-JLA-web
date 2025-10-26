@@ -1,0 +1,78 @@
+/* ===== 页面整体 ===== */
+.lyrics-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 30px;
+  background: #fafafa;
+  font-family: "Noto Sans", sans-serif;
+  line-height: 1.8;
+}
+
+/* ===== 主体卡片 ===== */
+.lyrics-card {
+  background: #fff;
+  width: 700px;
+  padding: 24px 32px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  animation: fadeIn .4s ease;
+}
+
+/* 入场动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 标题部分 ===== */
+.lyrics-title {
+  font-size: 28px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.lyrics-date {
+  color: #888;
+  font-size: 14px;
+}
+
+/* ===== 正文内容 ===== */
+.lyrics-content {
+  margin-top: 18px;
+  font-size: 16px;
+}
+
+.lyrics-content p {
+  margin-bottom: 12px;
+}
+
+/* 歌词悬浮批注 */
+.lyrics-content abbr {
+  cursor: help;
+  border-bottom: 1px dashed #ff7c9d;
+}
+
+/* 音频样式 */
+.lyrics-content audio {
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* 跳转按钮 */
+.music-buttons a {
+  display: inline-block;
+  background: #ff7da5;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.music-buttons a:hover {
+  background: #ff97b7;
+}
