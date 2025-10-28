@@ -16,6 +16,12 @@ defaultContentLanguage = "zh-cn"
 	ShowReadingTime = false 
 	description = "日本文化 × 言语"
 	customCSS = ["/css/custom.css"]
+	ShowPostNavLinks = true
+	ShowCodeCopyButtons = true
+	ShowFooter = true
+	[params.footer]
+  		text = "浙ICP备2025206493号"
+
 
 
 

@@ -1,0 +1,148 @@
+{{ define "main" }}
+<header class="hero-card">
+  <div class="hero-inner">
+    <h1>🌸 HITSZ 日语社</h1>
+    <p>ここは日本語サークルの公式サイトです — 欢迎加入我们的文化旅程！</p>
+  </div>
+  <!-- 花瓣容器 -->
+  <div class="petals"></div>
+</header>
+
+<main class="card-row">
+
+<!-- 关于我们 -->
+{{ $about := where .Site.RegularPages "Section" "about" | first 1 }}
+{{ range $about }}
+<section class="card large" data-animate>
+  <h2>关于我们</h2>
+  <div class="card-content">
+    {{ .Summary | safeHTML }} <!-- Hugo 会自动生成摘要 -->
+  </div>
+  <a href="{{ .RelPermalink }}" class="more">查看更多 →</a>
+</section>
+{{ end }}
+
+<!-- 公告 -->
+{{ $news := where .Site.RegularPages "Section" "news" | first 1 }}
+{{ range $news }}
+<section class="card large" data-animate>
+  <h2>公告</h2>
+  <div class="card-content">
+    <strong>{{ .Title }}</strong>
+    {{ .Summary | truncate 200 | safeHTML }}
+  </div>
+  <a href="{{ .RelPermalink }}" class="more">阅读更多 →</a>
+</section>
+{{ else }}
+<section class="card large" data-animate>
+  <h2>公告</h2>
+  <p class="card-content">暂无公告。</p>
+</section>
+{{ end }}
+
+<!-- 活动 -->
+{{ $allEvents := where .Site.RegularPages "Section" "events" }}
+{{ $publishedEvents := where $allEvents "Draft" "!=" true }}
+{{ $sortedEvents := sort $publishedEvents ".Lastmod" "desc" }}
+{{ $latestEvent := first 1 $sortedEvents }}
+
+{{ range $latestEvent }}
+<section class="card medium" data-animate>
+  <h2>活动</h2>
+  <div class="card-content">
+    <strong>{{ .Title }}</strong>
+    {{ if .Summary }}
+      {{ .Summary | truncate 150 | safeHTML }}
+    {{ else }}
+      <p>暂无简介。</p>
+    {{ end }}
+  </div>
+  <a href="{{ .RelPermalink }}" class="more">查看详情 →</a>
+</section>
+{{ else }}
+<section class="card medium" data-animate>
+  <h2>活动</h2>
+  <p class="card-content">暂无活动。</p>
+</section>
+{{ end }}
+
+<!-- 每周一曲 -->
+{{ $allLyrics := where .Site.RegularPages "Section" "lyrics" }}
+{{ $publishedLyrics := where $allLyrics "Draft" "!=" true }}
+{{ $sortedLyrics := sort $publishedLyrics ".Lastmod" "desc" }}
+{{ $latestLyrics := first 1 $sortedLyrics }}
+
+{{ range $latestLyrics }}
+<section class="card medium" data-animate>
+  <h2>每周一曲</h2>
+  <div class="card-content">
+    <strong>{{ .Title }}</strong>
+    {{ if .Summary }}
+      {{ .Summary | truncate 150 | safeHTML }}
+    {{ else }}
+      <p>暂无简介。</p>
+    {{ end }}
+  </div>
+  <a href="{{ .RelPermalink }}" class="more">查看详情 →</a>
+</section>
+{{ else }}
+<section class="card medium" data-animate>
+  <h2>每周一曲</h2>
+  <p class="card-content">暂无曲目。</p>
+</section>
+{{ end }}
+
+<!-- 联系方式 -->
+{{ $join := where .Site.RegularPages "Section" "join" | first 1 }}
+{{ range $join }}
+<section class="card small" data-animate>
+  <h2>加入我们</h2>
+  <div class="card-content">
+    {{ .Summary | truncate 100 | safeHTML }}
+  </div>
+  <a href="{{ .RelPermalink }}" class="more">查看报名方式 →</a>
+</section>
+{{ end }}
+
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const cards = document.querySelectorAll("[data-animate]");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target); // 只触发一次
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
+<script>
+const petalsContainer = document.querySelector('.petals');
+const petalsCount = 30; // 花瓣数量
+
+for (let i = 0; i < petalsCount; i++) {
+  const petal = document.createElement('div');
+  petal.classList.add('petal');
+  
+  // 随机水平位置
+  petal.style.left = Math.random() * 100 + '%';
+  // 随机大小
+  const size = Math.random() * 10 + 10; // 10px ~ 20px
+  petal.style.width = size + 'px';
+  petal.style.height = size + 'px';
+  // 随机动画时长
+  petal.style.animationDuration = (5 + Math.random() * 5) + 's';
+  // 随机延迟
+  petal.style.animationDelay = Math.random() * 5 + 's';
+  
+  petalsContainer.appendChild(petal);
+}
+</script>
+
+{{ end }}
