@@ -11,7 +11,7 @@ defaultContentLanguage = "zh-cn"
 		weight = 2
 
 [params] 
-	defaultTheme = "light"
+	defaultTheme = "auto"
 	disableThemeToggle = false
 	ShowReadingTime = false 
 	description = "日本文化 × 言语"

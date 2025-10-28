@@ -1,28 +1,28 @@
 :root {
-  --theme-accent: #f6dce9 !important; /* 樱花粉 */
-  --theme-accent-deep: #e5bfd8 !important;
+  --theme-accent: #f6dce9; /* 樱花粉 */
+  --theme-accent-deep: #e5bfd8;
 }
+
 a:hover {
-  color: var(--theme-accent-deep) !important;
+  color: var(--theme-accent-deep);
 }
 
+/* 背景跟随主题 */
 body {
-  background: linear-gradient(180deg, #fef8fc 0%, #ffffff 100%) !important;
-}
-
-body {
+  background: var(--color-bg);
   font-family: "Noto Sans JP", "PingFang SC", sans-serif;
   line-height: 1.7;
-  color: #333;
+  color: var(--color-fg);
 }
 
+/* 标题颜色跟随主题 */
 h1, h2 {
   font-weight: 700;
-  color: #222;
+  color: var(--color-h1, var(--color-fg)); /* 默认跟文字颜色一致 */
   letter-spacing: .03em;
 }
 
 h3, h4 {
   font-weight: 600;
-  color: #444;
+  color: var(--color-h3, var(--color-fg));
 }
