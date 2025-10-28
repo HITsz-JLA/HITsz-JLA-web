@@ -7,14 +7,6 @@ a:hover {
   color: var(--theme-accent-deep);
 }
 
-/* 背景跟随主题 */
-body {
-  background: var(--color-bg);
-  font-family: "Noto Sans JP", "PingFang SC", sans-serif;
-  line-height: 1.7;
-  color: var(--color-fg);
-}
-
 /* 标题颜色跟随主题 */
 h1, h2 {
   font-weight: 700;
@@ -26,3 +18,12 @@ h3, h4 {
   font-weight: 600;
   color: var(--color-h3, var(--color-fg));
 }
+/* ==========================
+   首页渐变 & 深色模式覆盖
+========================== */
+body.home {
+  background: linear-gradient(180deg, #fef8fc 0%, #ffffff 100%);
+}
+
+
+

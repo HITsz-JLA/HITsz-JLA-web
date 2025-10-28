@@ -1,55 +1,58 @@
+/* ===== 1. 外层布局 ===== */
 .lyrics {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 40px 20px;
-  background-color: #fff0f5; /* 淡粉色背景，可自定义 */
+  background-color: var(--theme); /* 背景色跟随主题 */
 }
 
-/* ===== 页面整体 ===== */
+/* ===== 2. 页面整体容器 ===== */
 .lyrics-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 32px;
   padding: 30px;
-  background: #fafafa;
+  background: var(--theme); /* PaperMod 全局背景变量 */
   font-family: "Noto Sans", sans-serif;
   line-height: 1.8;
+  color: var(--primary); /* 全局文字颜色 */
 }
 
-/* lyrics header 横向排列 */
+/* ===== 3. Header 标题区 ===== */
 .lyrics-header {
   display: flex;
-  flex-direction: row;       /* 横向排列 */
-  align-items: center;       /* 垂直居中对齐 */
-  justify-content: space-between; /* 左右分散 */
-  gap: 16px;                 /* 元素间间距 */
-  flex-wrap: wrap;           /* 如果太宽自动换行 */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
   margin-bottom: 16px;
 }
 
-/* 标题和日期样式 */
 .lyrics-header .lyrics-title {
   font-size: 28px;
   font-weight: bold;
   margin: 0;
+  color: var(--primary);
 }
 
 .lyrics-header .lyrics-date {
   font-size: 14px;
-  color: #888;
-  white-space: nowrap;  /* 保持日期不换行 */
+  color: var(--secondary);
+  white-space: nowrap;
 }
 
-/* ===== 主体卡片 ===== */
+/* ===== 4. 主体卡片 ===== */
 .lyrics-card {
-  background: #fff;
+  background: var(--entry); /* 跟随主题卡片背景 */
   width: 700px;
   padding: 24px 32px;
   border-radius: 14px;
   box-shadow: 0 4px 16px rgba(0,0,0,.08);
   animation: fadeIn .4s ease;
+  color: var(--primary);
 }
 
 /* 入场动画 */
@@ -58,22 +61,11 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== 标题部分 ===== */
-.lyrics-title {
-  font-size: 28px;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.lyrics-date {
-  color: #888;
-  font-size: 14px;
-}
-
-/* ===== 正文内容 ===== */
+/* ===== 5. 内容区 ===== */
 .lyrics-content {
   margin-top: 18px;
   font-size: 16px;
+  color: var(--primary);
 }
 
 .lyrics-content p {
@@ -83,7 +75,7 @@
 /* 歌词悬浮批注 */
 .lyrics-content abbr {
   cursor: help;
-  border-bottom: 1px dashed #ff7c9d;
+  border-bottom: 1px dashed var(--primary);
 }
 
 /* 音频样式 */
@@ -92,11 +84,11 @@
   width: 100%;
 }
 
-/* 跳转按钮 */
+/* ===== 6. 跳转按钮 ===== */
 .music-buttons a {
   display: inline-block;
-  background: #ff7da5;
-  color: #fff;
+  background: var(--primary); /* 使用主题主色 */
+  color: var(--theme);
   padding: 8px 14px;
   border-radius: 6px;
   margin-right: 8px;
@@ -106,16 +98,15 @@
 }
 
 .music-buttons a:hover {
-  background: #ff97b7;
+  background: var(--tertiary);
+  color: var(--theme);
 }
 
-
-
-/* 手机响应调整 */
+/* ===== 7. 响应式 ===== */
 @media (max-width: 768px) {
   .lyrics-header {
-    flex-direction: row;  /* 保持横向 */
-    justify-content: flex-start; /* 左对齐 */
+    flex-direction: row;
+    justify-content: flex-start;
     gap: 12px;
   }
 
@@ -126,10 +117,7 @@
   .lyrics-header .lyrics-date {
     font-size: 12px;
   }
-}
 
-/* ===== 手机响应 ===== */
-@media (max-width: 768px) {
   .lyrics {
     padding: 20px 10px;
   }

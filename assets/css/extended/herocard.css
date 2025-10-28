@@ -1,53 +1,54 @@
-/* Hero 卡片样式 */
+/* Hero 卡片样式（支持暗色模式） */
 .hero-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    background: #fff0f5; /* 淡樱花色背景 */
-    overflow: hidden; /* 防止花瓣跑出边界 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: var(--theme); /* 背景随主题 */
+  overflow: hidden;
 }
 
 .hero-inner {
-    background: rgba(255, 240, 245, 0.8); /* 半透明卡片效果 */
-    border-radius: 20px; /* 圆角 */
-    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); /* 柔和阴影 */
-    padding: 50px 40px;
-    text-align: center;
-    max-width: 800px;
-    width: 100%;
-    animation: float 6s ease-in-out infinite; /* 浮动动画 */
+  background: var(--entry); /* 卡片主体背景随主题 */
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* 阴影可保持统一色调 */
+  padding: 50px 40px;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* 标题样式 */
+/* 标题 */
 .hero-inner h1 {
-    font-size: 3rem;
-    color: #d1477f; /* 樱花粉色字体 */
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
+  font-size: 3rem;
+  color: var(--accent); /* 主强调色 */
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
 }
 
 .hero-inner h1:hover {
-    transform: scale(1.05); /* 鼠标悬停放大效果 */
+  transform: scale(1.05);
 }
 
 /* 描述文字 */
 .hero-inner p {
-    font-size: 1.25rem;
-    color: #8b3a62; /* 深粉色 */
-    line-height: 1.6;
+  font-size: 1.25rem;
+  color: var(--primary); /* 文字颜色随主题 */
+  line-height: 1.6;
 }
+
 
 /* 浮动动画 */
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-        box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
-    }
-    50% {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 30px rgba(255, 182, 193, 0.35);
-    }
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 25px var(--card-shadow, rgba(255, 182, 193, 0.3));
+  }
+  50% {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px var(--card-shadow-hover, rgba(255, 182, 193, 0.35));
+  }
 }
 
 /* 樱花动画 */
@@ -57,7 +58,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* 不挡住鼠标操作 */
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -65,7 +66,7 @@
   position: absolute;
   width: 15px;
   height: 15px;
-  background: pink;
+  background: var(--petal-color, pink);
   border-radius: 50%;
   opacity: 0.8;
   pointer-events: none;
@@ -87,13 +88,25 @@
 
 /* 响应式 */
 @media (max-width: 600px) {
-    .hero-inner {
-        padding: 30px 20px;
-    }
-    .hero-inner h1 {
-        font-size: 2rem;
-    }
-    .hero-inner p {
-        font-size: 1rem;
-    }
+  .hero-inner {
+    padding: 30px 20px;
+  }
+  .hero-inner h1 {
+    font-size: 2rem;
+  }
+  .hero-inner p {
+    font-size: 1rem;
+  }
+}
+
+/* ====== 夜间模式 ====== */
+:root[data-theme="dark"] {
+  --hero-bg: #101010;
+  --card-bg: #1a1a1a;
+  --text-color: #ccc;
+  --text-strong: #ddd;
+  --accent: #ff7eb6;
+  --card-shadow: rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: rgba(0, 0, 0, 0.6);
+  --petal-color: #ff9ecf;
 }
