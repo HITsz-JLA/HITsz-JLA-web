@@ -2,28 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Events on HITsz日语社</title>
-    <link>http://jpa.guramod.club/events/</link>
+    <link>http://localhost:1313/events/</link>
     <description>Recent content in Events on HITsz日语社</description>
-    <generator>Hugo -- 0.146.0</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 24 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://jpa.guramod.club/events/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/events/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【放映会公告】日语社文学部《情书》放映会 </title>
-      <link>http://jpa.guramod.club/events/20251025houenkai/</link>
+      <link>http://localhost:1313/events/20251025houenkai/</link>
       <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>http://jpa.guramod.club/events/20251025houenkai/</guid>
+      <guid>http://localhost:1313/events/20251025houenkai/</guid>
       <description>&lt;p&gt;&lt;strong&gt;时间： 10月25日（周六）晚上 19:00 - 21:30&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;地点： T4503&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;封面&#34; loading=&#34;lazy&#34; src=&#34;http://jpa.guramod.club/image/loveletter.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;封面&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/image/loveletter.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在这个秋天，与日语社一起重温那段藏在雪中的初恋记忆。三十年前的「お元気ですか」再次回荡，让我们在银幕的微光下，感受岩井俊二笔下最纯粹的浪漫。&lt;/p&gt;
 &lt;p&gt;本次放映会我们还准备了有奖问答环节，以及特别的“《情书》圣地巡礼指南分享”，带大家一起走进影片中的小樽世界。&lt;/p&gt;</description>
     </item>
     <item>
       <title>曾经举办过的活动</title>
-      <link>http://jpa.guramod.club/events/events/</link>
+      <link>http://localhost:1313/events/events/</link>
       <pubDate>Sun, 19 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>http://jpa.guramod.club/events/events/</guid>
+      <guid>http://localhost:1313/events/events/</guid>
       <description>&lt;h3 id=&#34;-近期活动&#34;&gt;🌸 近期活动&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;10月19日 —— 日语社KTV破冰活动&lt;/li&gt;
@@ -34,7 +34,7 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;-过去活动&#34;&gt;📷 过去活动&lt;/h3&gt;
 &lt;p&gt;KTV破冰活动&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;KTV活动&#34; loading=&#34;lazy&#34; src=&#34;http://jpa.guramod.club/image/20251019ktv1.jpg&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img alt=&#34;KTV活动&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/image/20251019ktv1.jpg&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://jpa.guramod.club/join/join/</loc>
+    <loc>http://localhost:1313/join/join/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/news/20251019ktv/</loc>
+    <loc>http://localhost:1313/news/20251019ktv/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-10-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://jpa.guramod.club/ja/"
+                href="http://localhost:1313/ja/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://jpa.guramod.club/"
+                href="http://localhost:1313/"
                 />
   </url><url>
-    <loc>http://jpa.guramod.club/lyrics/</loc>
+    <loc>http://localhost:1313/lyrics/</loc>
     <lastmod>2025-10-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/lyrics/koikaze/</loc>
+    <loc>http://localhost:1313/lyrics/koikaze/</loc>
     <lastmod>2025-10-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/events/20251025houenkai/</loc>
+    <loc>http://localhost:1313/events/20251025houenkai/</loc>
     <lastmod>2025-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/events/</loc>
+    <loc>http://localhost:1313/events/</loc>
     <lastmod>2025-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/join/</loc>
+    <loc>http://localhost:1313/join/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/news/</loc>
+    <loc>http://localhost:1313/news/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/events/events/</loc>
+    <loc>http://localhost:1313/events/events/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/about/about/</loc>
+    <loc>http://localhost:1313/about/about/</loc>
     <lastmod>2025-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://jpa.guramod.club/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://jpa.guramod.club/ja/categories/"
+                href="http://localhost:1313/ja/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://jpa.guramod.club/categories/"
+                href="http://localhost:1313/categories/"
                 />
   </url><url>
-    <loc>http://jpa.guramod.club/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://jpa.guramod.club/ja/tags/"
+                href="http://localhost:1313/ja/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://jpa.guramod.club/tags/"
+                href="http://localhost:1313/tags/"
                 />
   </url>
 </urlset>
