@@ -92,6 +92,26 @@
 </section>
 {{ end }}
 
+<!-- 每周文法 -->
+{{ $allGrammar := where .Site.RegularPages "Section" "grammar" }}
+{{ $publishedGrammar := where $allGrammar "Draft" "!=" true }}
+{{ $sortedGrammar := sort $publishedGrammar ".Lastmod" "desc" }}
+{{ $latestGrammar := first 1 $sortedGrammar }}
+<!-- 找到最新贴，就渲染摘要卡片的partial -->
+<section class="card medium" data-animate>
+<h2>每周文法</h2> 
+{{ if $latestGrammar }}
+  {{ range $latestGrammar }}
+    {{ partial "grammar-summary-card.html" . }}
+  {{ end }}
+{{ else }}
+
+  <!-- 如果没有语法, 给出提示词 -->
+    <h2>每周语法</h2>
+      <p class="card-content">暂无语法。</p>
+{{ end }}
+</section>
+
 <!-- 联系方式 -->
 {{ $join := where .Site.RegularPages "Section" "join" | first 1 }}
 {{ range $join }}

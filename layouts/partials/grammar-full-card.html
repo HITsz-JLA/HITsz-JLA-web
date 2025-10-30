@@ -1,0 +1,71 @@
+{{/* 
+  partial: grammar-full-card.html
+  功能: 渲染完整语法卡片，用于语法点详情页面
+*/}}
+
+{{- $Grammarpoint := . -}}
+{{- $lvl := $Grammarpoint.Params.grammarlevel -}}
+{{- $Grammarlevel_class := "" -}}
+
+{{ if $lvl }}
+  {{ $lvlLower := lower $lvl }}
+  {{ if eq $lvlLower "n4n5" }}
+    {{ $Grammarlevel_class = "n4n5" }}
+  {{ else }}
+    {{ $Grammarlevel_class = $lvlLower }}
+  {{ end }}
+{{ end }}
+
+<div class="grammar-point-card-full">
+  <!-- 语法标题 -->
+  <header class="grammar-full-header">
+   {{ if $Grammarpoint.Params.grammarlevel }}
+    <span class="grammar-level-tag {{ $Grammarlevel_class }}">
+      {{ $Grammarpoint.Params.grammarlevel }}
+    </span>
+    {{ end }}
+    <h3>{{ $Grammarpoint.Title }}</h3>
+  </header>
+
+  <!-- 语法内容 -->
+  <div class="grammar-full-content">
+    
+    <!-- 接续 -->
+    {{ with $Grammarpoint.Params.connection }}
+    <h4>接续</h4>
+    <div class="grammar-connection">
+      {{ . | safeHTML }}
+    </div>
+    {{ end }}
+
+    <!-- 讲解 -->
+    {{ with $Grammarpoint.Params.explanation }}
+    <h4>讲解</h4>
+    <div class="grammar-explanation">
+      {{ . | safeHTML }}
+    </div>
+    {{ end }}
+
+    <!-- 例文 -->
+    {{ with $Grammarpoint.Params.examples }}
+    <h4>例文</h4>
+    <div class="grammar-examples">
+      <ul>
+        {{ range . }}
+        <li class="grammar-example-item">
+          <div class="grammar-example-jp">  
+           <!-- 播放按钮 -->
+           <button class="grammar-audio-play-btn" data-src="{{.grammar_audio_src | default "" }}" title="播放语音">▶</button>
+           <span>{{ .jp | safeHTML }}</span>
+          </div>
+          {{ with .cn }}
+          <div class="grammar-example-cn">{{ . | safeHTML }}</div>
+          {{ end }}
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    
+  </div>
+</div>

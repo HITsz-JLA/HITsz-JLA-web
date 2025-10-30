@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main class="grammar-card-row">
+
+  <div class="grammar-header" style="width: 100%; max-width: 1200px; margin: 0 auto;">
+        <h1 class="grammar-title">全部每周语法</h1>
+  </div>
+
+  {{ $allGrammarPosts := where (where .Site.RegularPages "Section" "grammar") ".Date" "!=" nil }}
+  {{ $sortedGrammarPosts := sort $allGrammarPosts ".Date" "desc" }}
+  {{ if not $sortedGrammarPosts  }}
+        <p style="text-align: center; width: 100%; color: var(--secondary);">暂无已发布的每周语法记录。</p>
+    {{ else }}
+        {{ range $sortedGrammarPosts }}
+              {{ partial "grammar-summary-card.html" . }} 
+        {{ end }}
+    {{ end }}
+
+</main>
+{{ end }}

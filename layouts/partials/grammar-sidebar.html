@@ -1,0 +1,97 @@
+{{/* 
+  partial: grammar-sidebar.html
+  功能: 渲染语法侧栏小部件，包括“其他语法”和“等级筛选语法”
+*/}}
+
+{{- $currentContext := . -}}
+{{- $draftsFiltered := where (where .Site.RegularPages "Section" "grammar") "Draft" "!=" true -}}
+{{- $allGrammarPosts := where $draftsFiltered ".Date" "!=" nil -}}
+{{- $sortedGrammarPosts := sort $allGrammarPosts ".Date" "desc" -}}
+{{- $currentPermalink := $currentContext.Permalink -}}
+{{- $pastGrammarPosts := slice -}}
+{{- $count := 0 -}}
+{{- $limit := 3 -}}
+
+{{- range $sortedGrammarPosts -}}
+    {{- if ne .Permalink $currentPermalink -}}
+        {{- if lt $count $limit -}}
+            {{- $pastGrammarPosts = $pastGrammarPosts | append . -}}
+            {{- $count = add $count 1 -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+<!-- 侧边栏1:其他语法 -->
+<div class="grammar-sidebar-widget">
+    <h3>更多语法</h3>
+    
+    {{ if not $pastGrammarPosts }}
+        <p>暂无更多语法</p>
+    {{ else }}
+        <ul class="widget-list">
+            {{ range $pastGrammarPosts }}
+                {{- $pastDate := .Date.Format "2006-01-02" -}}
+                {{- $GrammarpastDate := .Date -}}
+                {{- $points := where (where .Site.RegularPages "Section" "grammarpoints") ".Date" $GrammarpastDate -}}
+                {{- $sortedPoints := $points.ByParam "level_sort" -}}
+                
+                <li>
+                    <a href="{{ .RelPermalink }}" title="查看 {{ $pastDate }} 的语法" class="block-link">
+                        <strong style="display: block; font-size: 1.1em; color: var(--primary);">
+                            {{ $pastDate }}
+                        </strong>
+                        <span style="font-size: 0.9em; color: var(--secondary);">
+                            {{ if eq (len $sortedPoints) 0 }}
+                                （暂无语法点）
+                            {{ else }}
+                                {{ range $index, $point := $sortedPoints }}
+                                    {{ if gt $index 0 }} <br> {{ end }}
+                                    {{ $point.Title }}
+                                {{ end }}
+                            {{ end }}
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+        
+        <!-- 更多按钮 -->
+        <a href="{{ "/grammar/" | absURL }}" class="sidebar-more-link">查看全部语法</a>
+    {{ end }}
+</div>
+
+
+<!-- 侧边栏2，等级筛选语法  有bug,先注释掉
+<div class="grammar-sidebar-widget">
+    <h3>按语法等级筛选</h3>
+    
+    <div class="grammar-level-filter-buttons">
+    {{ $Grammarpoints := where (where .Site.RegularPages "Section" "grammarpoints") "Draft" "!=" true }} 
+    {{ $names := slice }}
+     {{ range $p := $Grammarpoints }} 
+     {{ $lvl := $p.Params.grammarlevel}} 
+     {{ if not (in $names $lvl) }} 
+     {{ $names = $names | append $lvl }} 
+ {{ end }}
+{{ end }} 
+      
+      {{ $names = sort $names }} 
+        {{ if eq (len $names) 0 }} 
+          <p>暂无分类</p>
+        {{ else }} 
+          {{ range $names }} 
+            {{ $termName := . }} 
+            {{ $Grammarlevel_class := $termName }} 
+        
+        {{ $Grammarlevel_class = lower $Grammarlevel_class }} 
+        
+        
+        {{ $count := len (where $Grammarpoints "Params.grammarlevel" "eq" $termName) }} 
+        {{ $rel := (printf "/grammarlevel/%s/" (urlize $termName)) | relURL }}
+
+           <a href="{{ $rel }}" class="level-{{ $Grammarlevel_class }}">
+             {{ $termName }} ({{ $count }}条) </a> 
+      {{ end }}
+    {{ end }} 
+  </div> 
+</div>
+-->

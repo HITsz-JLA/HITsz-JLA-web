@@ -1,0 +1,89 @@
+{{ define "main" }}
+<main class="grammar-container">
+
+  <article class="grammar-card">
+
+    <!-- 显示标题与时间 -->
+    <header class="grammar-header">
+      <h1 class="grammar-title">{{ .Title }}</h1>
+      {{ with .Date }}
+        <time class="grammar-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+      {{ end }} 
+     <h5 class="grammar-description">毎週少しずつ、文法を身につけよう！</h5>
+    </header>
+
+  
+   <div class="grammar-content">      
+       <!-- 获取并调用完整卡片显示当天的语法点 -->
+     {{ $currentDate := .Date }}
+     {{ $Grammarpoints := where (where .Site.RegularPages "Section" "grammarpoints") "Date" "eq" $currentDate }}
+       {{ $GrammarsortedPoints := $Grammarpoints.ByParam "level_sort" }}
+      
+       {{ range $GrammarsortedPoints }}
+         {{ partial "grammar-full-card.html" . }}
+       {{ else }}
+         <p>暂无语法点</p>
+       {{ end }}
+   </div>
+
+  </article>
+
+  <!-- 右侧语法侧边栏，调用侧边栏目 -->
+  <aside class="sidebar right-sidebar">
+    {{ partial "grammar-sidebar.html" . }}
+  </aside>
+
+</main>
+
+<!-- 共享的 Audio 元素，以下为ai内容，之后再看是否需要调整 -->
+<audio id="globalAudioPlayer" style="display:none;"></audio>
+
+<!-- 播放器 JS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const globalPlayer = document.getElementById('globalAudioPlayer');
+  let currentPlayingBtn = null;
+
+  document.body.addEventListener('click', (e) => {
+    // 兼容多种按钮类名，优先匹配带 data-src 的按钮
+    const btn = e.target.closest('button[data-src], .audio-play-btn, .grammar-audio-play-btn');
+    if (!btn) return;
+
+    e.preventDefault();
+    const audioSrc = btn.dataset.src;
+    if (!audioSrc) return;
+
+    if (currentPlayingBtn === btn) {
+      // 点击的是同一个按钮: 暂停
+      globalPlayer.pause();
+      btn.classList.remove('playing');
+      btn.textContent = '▶';
+      currentPlayingBtn = null;
+    } else {
+      // 点击新按钮
+      // 停止上一个
+      if (currentPlayingBtn) {
+        currentPlayingBtn.classList.remove('playing');
+        currentPlayingBtn.textContent = '▶';
+      }
+      
+      // 播放新的
+      globalPlayer.src = audioSrc;
+      globalPlayer.play();
+      btn.classList.add('playing');
+      btn.textContent = '⏸️'; // 暂停图标
+      currentPlayingBtn = btn;
+    }
+  });
+
+  // 播放结束时重置按钮
+  globalPlayer.addEventListener('ended', () => {
+    if (currentPlayingBtn) {
+      currentPlayingBtn.classList.remove('playing');
+      currentPlayingBtn.textContent = '▶';
+      currentPlayingBtn = null;
+    }
+  });
+});
+</script>
+{{ end }}

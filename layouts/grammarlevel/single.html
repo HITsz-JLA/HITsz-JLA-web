@@ -1,0 +1,89 @@
+{{ define "main" }}
+
+<main class="grammar-container">
+
+  <!-- 主体文章列 -->
+  <article class="grammar-card">
+  <header class="grammar-header">
+      <h1 class="grammar-title">{{ .Title }} の文法一覧</h1>
+      {{- if .Description }}
+      <div class="grammar-content" style="font-size: 1rem; color: var(--secondary);">
+        {{ .Description }}
+      </div>
+      {{- end }}
+    </header>
+
+    <div class="grammar-content">
+      {{ $sectionName := "grammarpoints" }}
+      {{ $levelName := .Title }}
+      {{ $allPages := where .Site.RegularPages "Section" $sectionName }}
+      {{ $levelPages := where $allPages "Params.grammarlevel" "eq" $levelName }}
+
+      <p>当前 Section: {{ $sectionName }}</p>
+      <p>当前 Title: {{ .Title }}</p>
+      <p>匹配到的页面数量: {{ len $levelPages }}</p>
+      
+      {{ if eq (len $levelPages) 0 }}
+        <p>暂无该等级的语法点。</p>
+      {{ else }}
+        {{ range $levelPages.ByDate.Reverse }}
+          {{ .Title }}
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+
+ </article>
+
+  <!-- 右侧侧边栏 -->
+  <aside class="sidebar right-sidebar">
+    {{ partial "grammar-sidebar.html" . }}
+  </aside>
+
+</main>
+
+<!-- 共享的 Audio 元素 同样为ai-->
+<audio id="globalAudioPlayer" style="display:none;"></audio>
+<!-- 播放器 JS (与 grammar/single.html 相同) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const globalPlayer = document.getElementById('globalAudioPlayer');
+  let currentPlayingBtn = null;
+
+  document.body.addEventListener('click', (e) => {
+    // 兼容多种按钮类名，优先匹配带 data-src 的按钮
+    const btn = e.target.closest('button[data-src], .audio-play-btn, .grammar-audio-play-btn');
+    if (!btn) return;
+    e.preventDefault();
+    const audioSrc = btn.dataset.src;
+    if (!audioSrc) {
+      console.warn('No audio source provided for this button.');
+      return;
+    }
+    if (currentPlayingBtn === btn) {
+      globalPlayer.pause();
+      btn.classList.remove('playing');
+      btn.textContent = '▶';
+      currentPlayingBtn = null;
+    } else {
+      if (currentPlayingBtn) {
+        currentPlayingBtn.classList.remove('playing');
+        currentPlayingBtn.textContent = '▶';
+      }
+      globalPlayer.src = audioSrc;
+      globalPlayer.play().catch(err => console.error("Audio playback error:", err));
+      btn.classList.add('playing');
+      btn.textContent = '⏸️'; // 暂停图标
+      currentPlayingBtn = btn;
+    }
+  });
+
+  globalPlayer.addEventListener('ended', () => {
+    if (currentPlayingBtn) {
+      currentPlayingBtn.classList.remove('playing');
+      currentPlayingBtn.textContent = '▶';
+      currentPlayingBtn = null;
+    }
+  });
+});
+</script>

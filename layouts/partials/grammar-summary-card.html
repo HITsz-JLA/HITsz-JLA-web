@@ -1,0 +1,45 @@
+{{/* 
+  partial: grammar-summary-card.html
+  功能: 渲染摘要卡片，用于主页，侧栏与语法记录页面
+*/}}
+{{- $page := . -}}
+
+{{ $currentDate := $page.Date }}
+{{ $Grammarpoints := where (where .Site.RegularPages "Section" "grammarpoints") "Date" "eq" $currentDate }}
+{{ $GrammarsortedPoints := $Grammarpoints.ByParam "level_sort" }}  
+<section class="card medium grammar-summary-card" data-animate>
+  <div class="grammar-summary-header" data-animate style="opacity: 1;">
+    <h3 style="opacity: 1; color: var(--primary);">{{ $page.Title }}</h3>
+    <span class="date">{{ $page.Date.Format "2006-01-02" }}</span>
+  </div>
+
+  <div class="grammar-summary-list" style="opacity: 1;">
+    <ul>
+      <br>
+      {{ range $GrammarsortedPoints }}
+        {{ $lvl := .Params.grammarlevel}}
+        <li>
+          {{ $cls := lower $lvl }}
+          
+          {{if eq $lvl "N4N5" }}
+          <span class="grammar-level-tag {{ $cls }}" style="padding: 7.5px 8.5px; font-size: 0.7rem;">
+            {{ $lvl }}
+          </span>
+          {{else}}
+          <span class="grammar-level-tag {{ $cls }}" style="padding: 6px 15px; font-size: 0.8rem;">
+            {{ $lvl }} 
+          </span>
+          {{end}}
+
+          {{ .Title }}
+        </li>
+      {{ else }}
+        <li>暂无语法</li>
+      {{ end }}
+    </ul>
+  </div>
+
+  <a href="{{ $page.RelPermalink }}" class="more grammar-summary-list more-link">
+    查看完整讲解 →
+  </a>
+</section>
