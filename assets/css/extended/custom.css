@@ -82,12 +82,13 @@
 
 /* ===== 卡片内图片样式（等比缩放 + 限高） ===== */
 .card img {
-  width: 100%;
+  width: auto;             /* 保持原始宽高比 */
+  max-width: 100%;     
   height: auto;
-  max-height: 200px;        /* 限制最大高度，可按需调整 */
+  max-height: 800px;       /* 最高不超过 800px */
   border-radius: 10px;
-  object-fit: cover;        /* 超出部分裁剪，保证比例美观 */
-  margin-bottom: 12px;
+  display: block;
+  margin: 0 auto 12px;     /* 居中 + 底部间距 */
   transition: transform 0.3s ease;
 }
 
