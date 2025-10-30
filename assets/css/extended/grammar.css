@@ -493,3 +493,162 @@ body.dark .grammar-audio-play-btn:hover {
             color: var(--secondary);
             margin-left: 8px;
           }
+
+/* ============================
+   📱 移动端适配（Responsive Design）
+   ============================ */
+
+/* 平板（≤1024px） */
+@media (max-width: 1024px) {
+  .grammar-container {
+    flex-direction: column; /* 主体与侧栏垂直排列 */
+    align-items: center;
+    padding: 16px;
+  }
+
+  .grammar-card-row {
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .grammar-summary-card {
+    max-width: 100%;
+  }
+
+  .grammar-sidebar-widget {
+    width: 100%;
+  }
+}
+
+/* 手机横屏（≤768px） */
+@media (max-width: 768px) {
+  .grammar-header .grammar-title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .grammar-header .grammar-description {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .grammar-card {
+    padding: 1rem;
+  }
+
+  .grammar-full-header h3 {
+    font-size: 1.4rem;
+  }
+
+  .grammar-full-content {
+    padding: 0 16px 16px 16px;
+  }
+
+  .grammar-level-tag {
+    font-size: 0.9rem;
+    padding: 4px 10px;
+  }
+
+  .grammar-example-jp {
+    font-size: 1rem;
+  }
+
+  .grammar-example-cn {
+    font-size: 0.9rem;
+    margin-left: 2em;
+  }
+
+  .grammar-audio-play-btn {
+    font-size: 1.3rem;
+  }
+
+  .grammar-sidebar-widget {
+    margin-top: 20px;
+    width: 90%;
+  }
+
+  .grammar-level-filter-buttons {
+    flex-direction: row; /* 按钮横排 */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .grammar-level-filter-buttons a {
+    flex: 1 1 40%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* 手机竖屏（≤480px） */
+@media (max-width: 480px) {
+  .grammar {
+    padding: 20px 10px;
+  }
+
+  .grammar-container {
+    padding: 10px;
+  }
+
+  .grammar-header .grammar-title {
+    font-size: 24px;
+  }
+
+  .grammar-header .grammar-date {
+    font-size: 14px;
+  }
+
+  .grammar-header .grammar-description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .grammar-card {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+  }
+
+  .grammar-point-card-full {
+    margin: 30px 0;
+    border-radius: 15px;
+  }
+
+  .grammar-full-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .grammar-full-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .grammar-connection {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+
+  .grammar-example-jp {
+    font-size: 0.95rem;
+  }
+
+  .grammar-example-cn {
+    font-size: 0.85rem;
+    margin-left: 1.5em;
+  }
+
+  .grammar-audio-play-btn {
+    font-size: 1.1rem;
+  }
+
+  .grammar-sidebar-widget {
+    padding: 0.8rem;
+    width: 100%;
+  }
+
+  .grammar-level-filter-buttons a {
+    flex: 1 1 45%;
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
