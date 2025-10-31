@@ -80,6 +80,22 @@
   box-shadow: 0 12px 25px rgba(0, 0, 0, .15); /* 阴影变深 */
 }
 
+/* ===== 卡片内图片样式（等比缩放 + 限高） ===== */
+.card img {
+  width: auto;             /* 保持原始宽高比 */
+  max-width: 100%;     
+  height: auto;
+  max-height: 800px;       /* 最高不超过 800px */
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 12px;     /* 居中 + 底部间距 */
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.02);
+}
+
 /* ===== 8. data-animate 动画 ===== */
 [data-animate] {
   opacity: 0;
