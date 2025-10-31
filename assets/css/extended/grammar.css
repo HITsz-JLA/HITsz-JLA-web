@@ -372,6 +372,9 @@ body.dark .grammar-audio-play-btn:hover {
   transform: scale(0.95); /* 点击时稍微缩小 */
 }
 
+body.dark .grammar-audio-play-btn:active {
+  transform: scale(0.95);
+}
 
 
 

@@ -42,46 +42,46 @@
 
 </main>
 
-<!-- 共享的 Audio 元素 同样为ai-->
-<audio id="globalAudioPlayer" style="display:none;"></audio>
-<!-- 播放器 JS (与 grammar/single.html 相同) -->
+<!-- 调用播放audio原生控件 -->
+<audio id="globalAudioPlayer" controls preload="none" style="width:100%; max-width:320px; border-radius:10px;"></audio>
+
+<!-- 播放器 JS -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const globalPlayer = document.getElementById('globalAudioPlayer');
   let currentPlayingBtn = null;
 
   document.body.addEventListener('click', (e) => {
-    // 兼容多种按钮类名，优先匹配带 data-src 的按钮
     const btn = e.target.closest('button[data-src], .audio-play-btn, .grammar-audio-play-btn');
     if (!btn) return;
+
     e.preventDefault();
     const audioSrc = btn.dataset.src;
-    if (!audioSrc) {
-      console.warn('No audio source provided for this button.');
-      return;
-    }
+    if (!audioSrc) return;
+
+    // 点击同一个按钮 => 播放/暂停切换
     if (currentPlayingBtn === btn) {
-      globalPlayer.pause();
-      btn.classList.remove('playing');
-      btn.textContent = '▶';
-      currentPlayingBtn = null;
-    } else {
-      if (currentPlayingBtn) {
-        currentPlayingBtn.classList.remove('playing');
-        currentPlayingBtn.textContent = '▶';
+      if (globalPlayer.paused) {
+        globalPlayer.play();
+      } else {
+        globalPlayer.pause();
       }
+    } else {
+      // 切换到新的音频
+      if (currentPlayingBtn) currentPlayingBtn.classList.remove('playing');
+
       globalPlayer.src = audioSrc;
-      globalPlayer.play().catch(err => console.error("Audio playback error:", err));
+      globalPlayer.play();
+
       btn.classList.add('playing');
-      btn.textContent = '⏸️'; // 暂停图标
       currentPlayingBtn = btn;
     }
   });
 
+  // 播放结束时重置状态
   globalPlayer.addEventListener('ended', () => {
     if (currentPlayingBtn) {
       currentPlayingBtn.classList.remove('playing');
-      currentPlayingBtn.textContent = '▶';
       currentPlayingBtn = null;
     }
   });
