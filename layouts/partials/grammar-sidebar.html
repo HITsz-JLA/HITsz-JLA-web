@@ -60,19 +60,19 @@
 </div>
 
 
-<!-- 侧边栏2，等级筛选语法  有bug,先注释掉
+<!-- 侧边栏2，等级筛选语法  有bug,先注释掉-->
 <div class="grammar-sidebar-widget">
     <h3>按语法等级筛选</h3>
     
     <div class="grammar-level-filter-buttons">
-    {{ $Grammarpoints := where (where .Site.RegularPages "Section" "grammarpoints") "Draft" "!=" true }} 
-    {{ $names := slice }}
+     {{ $Grammarpoints := where (where .Site.RegularPages "Section" "grammarpoints") "Draft" "!=" true }} 
+     {{ $names := slice }}
      {{ range $p := $Grammarpoints }} 
      {{ $lvl := $p.Params.grammarlevel}} 
      {{ if not (in $names $lvl) }} 
      {{ $names = $names | append $lvl }} 
- {{ end }}
-{{ end }} 
+  {{ end }}
+ {{ end }} 
       
       {{ $names = sort $names }} 
         {{ if eq (len $names) 0 }} 
@@ -81,17 +81,12 @@
           {{ range $names }} 
             {{ $termName := . }} 
             {{ $Grammarlevel_class := $termName }} 
-        
         {{ $Grammarlevel_class = lower $Grammarlevel_class }} 
-        
-        
-        {{ $count := len (where $Grammarpoints "Params.grammarlevel" "eq" $termName) }} 
         {{ $rel := (printf "/grammarlevel/%s/" (urlize $termName)) | relURL }}
 
            <a href="{{ $rel }}" class="level-{{ $Grammarlevel_class }}">
-             {{ $termName }} ({{ $count }}条) </a> 
+             {{ $termName }} </a> 
       {{ end }}
-    {{ end }} 
+    {{ end }}   
   </div> 
 </div>
--->

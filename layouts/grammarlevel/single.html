@@ -1,37 +1,36 @@
 {{ define "main" }}
-
 <main class="grammar-container">
 
   <!-- 主体文章列 -->
   <article class="grammar-card">
-  <header class="grammar-header">
-      <h1 class="grammar-title">{{ .Title }} の文法一覧</h1>
-      {{- if .Description }}
-      <div class="grammar-content" style="font-size: 1rem; color: var(--secondary);">
-        {{ .Description }}
-      </div>
-      {{- end }}
-    </header>
-
-    <div class="grammar-content">
       {{ $sectionName := "grammarpoints" }}
       {{ $levelName := .Title }}
       {{ $allPages := where .Site.RegularPages "Section" $sectionName }}
       {{ $levelPages := where $allPages "Params.grammarlevel" "eq" $levelName }}
-
-      <p>当前 Section: {{ $sectionName }}</p>
-      <p>当前 Title: {{ .Title }}</p>
-      <p>匹配到的页面数量: {{ len $levelPages }}</p>
-      
+  <header class="grammar-header">
+      <h1 class="grammar-title">{{ .Title }} の文法一覧</h1>
       {{ if eq (len $levelPages) 0 }}
         <p>暂无该等级的语法点。</p>
       {{ else }}
+       <p style="font-size: 18px;">该等级共有 <em><strong>{{ len $levelPages }}</strong></em> 条语法</p> 
+        {{- if .Description }}
+         <h5 class="grammar-description">
+        {{ .Description }}
+      </h5>
+      {{- end }}
         {{ range $levelPages.ByDate.Reverse }}
-          {{ .Title }}
+          {{ partial "grammar-full-card.html" . }}
         {{ end }}
       {{ end }}
+     
+    </header>
+
+    <div class="grammar-content">
+      
+      
+      
+      
     </div>
-  {{ end }}
 
  </article>
 
@@ -43,7 +42,7 @@
 </main>
 
 <!-- 调用播放audio原生控件 -->
-<audio id="globalAudioPlayer" controls preload="none" style="width:100%; max-width:320px; border-radius:10px;"></audio>
+<audio id="globalAudioPlayer" controls preload="none" style="display: none;"></audio>
 
 <!-- 播放器 JS -->
 <script>
@@ -87,3 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+{{ end }}
