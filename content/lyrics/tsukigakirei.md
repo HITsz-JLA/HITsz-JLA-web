@@ -1,6 +1,6 @@
 ---
 title: "月がきれい - 東山奈央"
-date: 2025-11-02
+date: 2025-11-03
 draft: false
 type: lyrics
 --- 
