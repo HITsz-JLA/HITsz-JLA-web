@@ -67,7 +67,7 @@ type: lyrics
 
 正如我们那天一起仰望的 那般美丽
 
-**<ruby>暑<rt>あつ</ruby>い<ruby>夏<rt>なつ</ruby>の<ruby>日差<rt>ひざ</ruby>し <ruby>揺<rt>ゆ</ruby>れる<ruby>風鈴<rt>ふうりん</ruby>の<ruby>音<rt>おと</ruby>**
+**<ruby>暑<rt>あつ</ruby>い<ruby>夏<rt>なつ</ruby>の<ruby>日差<rt>ひざ</ruby>し <ruby>揺<rt>ゆ</ruby>れる<ruby>風鈴<rt>ふうりん</ruby>の<ruby>音<rt>ね</ruby>**
 
 夏季的烈日 摇动的风铃之音
 
