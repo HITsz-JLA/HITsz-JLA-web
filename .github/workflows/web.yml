@@ -30,7 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.152.2
-      BASE_URL: "https://hitsz-jla.github.io/HITsz-JLA-web/"
     steps:
       - name: Install Hugo CLI
         run: |
@@ -54,7 +53,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${BASE_URL}"
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

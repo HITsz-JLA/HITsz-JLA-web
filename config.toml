@@ -40,7 +40,13 @@ timeZone = "Asia/Shanghai"
 	[[menu.main]]
 		name = "加入我们"
 		url = "join/join"
+	[[menu.main]]
+		name = "搜索"
+		url = "search"
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON" ]
