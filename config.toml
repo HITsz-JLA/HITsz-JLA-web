@@ -18,7 +18,7 @@ timeZone = "Asia/Shanghai"
 	ShowCodeCopyButtons = true
 	ShowFooter = true
 	[params.footer]
-  		text = "浙ICP备2025206493号"
+  		
 
 
 
