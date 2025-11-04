@@ -47,7 +47,7 @@
 {{ $latestEvent := first 1 $sortedEvents }}
 
 {{ range $latestEvent }}
-<section class="card medium" data-animate>
+<section class="card large" data-animate>
   <h2>活动</h2>
   <div class="card-content">
     <strong>{{ .Title }}</strong>
@@ -60,7 +60,7 @@
   <a href="{{ .RelPermalink }}" class="more">查看详情 →</a>
 </section>
 {{ else }}
-<section class="card medium" data-animate>
+<section class="card large" data-animate>
   <h2>活动</h2>
   <p class="card-content">暂无活动。</p>
 </section>
