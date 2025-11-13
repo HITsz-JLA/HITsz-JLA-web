@@ -13,8 +13,8 @@
   justify-content: center;
   align-items: flex-start;
   gap: 32px;
-  padding: 30px;
-  background: var(--theme);
+  padding: 20px;
+  background: var(--theme);/* 与整体背景一致 */
   font-family: "Noto Sans", "Noto Serif SC", serif; /* 衬线体增加阅读感 */
   line-height: 1.8;
   color: var(--primary);
@@ -28,11 +28,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
-  border-bottom: 1px dashed var(--secondary);
-  padding-bottom: 16px;
+  border-bottom: 2px solid var(--theme-accent);/* 强调分割线 */
+  margin-bottom: 20px;
+  border-bottom: 1px dashed var(--secondary);/* 次要分割线 */
+  padding-bottom: 12px;
 }
 
 .readings-header .readings-title {
@@ -46,17 +47,19 @@
   font-size: 14px;
   color: var(--secondary);
   white-space: nowrap;
+  display: block;
 }
 
 /* ===== 4. 主体卡片 ===== */
 .readings-card {
   background: var(--entry);
-  flex: 1; /* 占据剩余空间 */
-  padding: 40px 50px; /* 文章留白稍微多一点 */
+  flex-grow: 1;/* 允许扩展 */ 
+  padding: 30px 40px; /* 文章留白稍微多一点 */
   border-radius: 14px;
   box-shadow: 0 4px 16px rgba(0,0,0,.08);
   animation: fadeIn .4s ease;
   color: var(--primary);
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;/* 过渡效果 */
   min-width: 0; /* 防止 flex 子元素溢出 */
 }
 
@@ -79,7 +82,14 @@
   text-indent: 2em; /* 首行缩进 */
 }
 
-.readings-content h2, 
+.readings-content h2 {
+    margin-top: 25px;
+    font-size: 1.8em;
+    color: var(--primary);
+    border-bottom: 1px dashed var(--theme-accent);/* 强调分割线 */
+    font-weight: bold;
+} 
+
 .readings-content h3 {
   margin-top: 1.5em;
   margin-bottom: 0.8em;
@@ -87,22 +97,104 @@
   font-weight: bold;
 }
 
+.readings-content h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  color: var(--primary);
+  font-weight: bold;
+}
+
 .readings-content blockquote {
   border-left: 4px solid var(--tertiary);
-  background: rgba(var(--tertiary), 0.1);
+  background: var(--theme-light);
   margin: 1.5em 0;
   padding: 1em;
   color: var(--secondary);
   font-style: italic;
 }
 
-/* ===== 6. 侧边栏 (过往文章) ===== */
+:root[data-theme="dark"] .readings-content blockquote {
+    background: rgba(255, 255, 255, 0.05); /* 暗模式下使用透明浅色背景 */
+}
+
+/* 6. 表格样式优化 */
+
+.readings-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    /* 核心改動：添加表格邊框顏色過渡 */
+    transition: color 0.5s ease; 
+}
+
+/* 確保表格在小屏幕上可水平滾動 */
+.readings-content > div {
+    overflow-x: auto;
+}
+
+.readings-content th,
+.readings-content td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--theme-accent); /* 主题色*/
+}
+
+:root[data-theme="dark"] .readings-content th,
+:root[data-theme="dark"] .readings-content td {
+    border-bottom: 1px solid var(--color-border-soft-dark, rgba(255, 255, 255, 0.1));
+}
+
+.readings-content th {
+    background-color: var(--theme-light);
+    color: var(--primary);
+    font-weight: 700;
+    border-top: 2px solid var(--theme-accent-deep);/* 強調表頭邊框 */
+}
+
+:root[data-theme="dark"] .readings-content th {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+
+.readings-content td:first-child {
+    text-align: left;/* 第一列左对齐 */
+    font-weight: 500;
+}
+
+/* 7. Markdown 列表嵌套修正 */
+
+/* 修正 Markdown 嵌套列表的间距，确保其缩进层次感 */
+.readings-content ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.readings-content ul ul {
+    list-style: circle;
+    padding-left: 30px; /* 增加二级列表缩进 */
+    margin: 5px 0;
+}
+
+.readings-content ul ul li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+/* 侧边栏列表使用无序或自定义样式 */
+.sidebar .widget-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* ===== 8. 侧边栏 (过往文章) ===== */
 .sidebar.right-sidebar {
   width: 300px;
   flex-shrink: 0;
 }
 
-/* ===== 7. 响应式适配 (移动端) ===== */
+/* ===== 9. 响应式适配 (移动端) ===== */
 @media (max-width: 900px) {
   .readings-container {
     flex-direction: column;
