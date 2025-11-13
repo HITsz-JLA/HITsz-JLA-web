@@ -1,0 +1,30 @@
+{{/* partial: past-readings.html
+  功能: 查询 readings Section 的历史文章
+*/}}
+
+{{ $allReadings := where .Site.RegularPages "Section" "readings" }}
+{{ $publishedReadings := where $allReadings "Draft" "!=" true }}
+{{ $otherReadings := where $publishedReadings "Permalink" "ne" .Permalink }}
+
+{{ $sortedReadings := sort $otherReadings ".Date" "desc" }}
+
+<!-- 显示最近的 3 篇文章 -->
+{{ $displayReadings := first 3 $sortedReadings }}
+
+<ul class="widget-list">
+  {{ range $displayReadings }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ if .Date }}
+        <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ end }}
+    </li>
+  {{ else }}
+    <li>暂无往期文章</li>
+  {{ end }}
+</ul>
+{{ if gt (len $sortedReadings) 3 }} 
+  <div style="margin-top:10px; text-align:right;">
+    <a href="/readings/" style="font-size:0.9rem; color:var(--secondary);">查看全部 &raquo;</a>
+  </div>
+{{ end }}

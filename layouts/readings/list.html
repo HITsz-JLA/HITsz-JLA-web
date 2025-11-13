@@ -1,0 +1,30 @@
+{{ define "main" }}
+<main class="readings-container">
+  
+  <!-- 列表容器 -->
+  <div class="readings-card">
+    <header class="readings-header">
+      <h1 class="readings-title">每周一文列表</h1>
+    </header>
+
+    <div class="readings-content">
+      {{ $pages := where .Site.RegularPages "Section" "readings" }}
+      {{ range $pages.ByDate.Reverse }}
+        <div style="margin-bottom: 25px; border-bottom: 1px dashed var(--secondary); padding-bottom: 15px;">
+          <h3 style="margin-top:0;">
+            <a href="{{ .RelPermalink }}" style="text-decoration:none; color:var(--primary);">{{ .Title }}</a>
+          </h3>
+          <div style="font-size:0.9rem; color:var(--secondary); margin-bottom:8px;">
+            {{ .Date.Format "2006-01-02" }}
+          </div>
+          <div style="color:var(--secondary);">
+            {{ .Summary | truncate 100 }}
+          </div>
+          <a href="{{ .RelPermalink }}" style="font-size:0.9rem; color:var(--tertiary); display:inline-block; margin-top:5px;">阅读全文 →</a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+
+</main>
+{{ end }}

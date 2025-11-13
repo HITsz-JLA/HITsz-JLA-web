@@ -1,0 +1,136 @@
+/* ===== 1. 外层布局 ===== */
+.readings {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background-color: var(--theme);
+}
+
+/* ===== 2. 页面整体容器 ===== */
+.readings-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 30px;
+  background: var(--theme);
+  font-family: "Noto Sans", "Noto Serif SC", serif; /* 衬线体增加阅读感 */
+  line-height: 1.8;
+  color: var(--primary);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== 3. Header 标题区 ===== */
+.readings-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  border-bottom: 1px dashed var(--secondary);
+  padding-bottom: 16px;
+}
+
+.readings-header .readings-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  color: var(--primary);
+}
+
+.readings-header .readings-date {
+  font-size: 14px;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+/* ===== 4. 主体卡片 ===== */
+.readings-card {
+  background: var(--entry);
+  flex: 1; /* 占据剩余空间 */
+  padding: 40px 50px; /* 文章留白稍微多一点 */
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  animation: fadeIn .4s ease;
+  color: var(--primary);
+  min-width: 0; /* 防止 flex 子元素溢出 */
+}
+
+/* 入场动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 5. 内容区排版 ===== */
+.readings-content {
+  margin-top: 18px;
+  font-size: 17px; /* 文章字号稍大 */
+  color: var(--primary);
+  text-align: justify; /* 两端对齐 */
+}
+
+.readings-content p {
+  margin-bottom: 1.5em;
+  text-indent: 2em; /* 首行缩进 */
+}
+
+.readings-content h2, 
+.readings-content h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.readings-content blockquote {
+  border-left: 4px solid var(--tertiary);
+  background: rgba(var(--tertiary), 0.1);
+  margin: 1.5em 0;
+  padding: 1em;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+/* ===== 6. 侧边栏 (过往文章) ===== */
+.sidebar.right-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+/* ===== 7. 响应式适配 (移动端) ===== */
+@media (max-width: 900px) {
+  .readings-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+  }
+
+  .sidebar.right-sidebar {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .readings-card {
+    width: 100%;
+    padding: 20px 24px;
+  }
+
+  .readings-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .readings-header .readings-title {
+    font-size: 24px;
+  }
+
+  .readings-content {
+    font-size: 16px;
+  }
+}

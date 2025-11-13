@@ -112,6 +112,34 @@
 {{ end }}
 </section>
 
+<!-- 每周一文 -->
+{{ $allReadings := where .Site.RegularPages "Section" "readings" }}
+{{ $publishedReadings := where $allReadings "Draft" "!=" true }}
+{{ $sortedReadings := sort $publishedReadings ".Date" "desc" }}
+{{ $latestReading := first 1 $sortedReadings }}
+
+{{ range $latestReading }}
+<section class="card medium" data-animate>
+  <h2>每周一文</h2>
+  <div class="card-content">
+    <h3><strong>{{ .Title }}</strong></h3>
+    {{ if .Summary }}
+      <div class="summary">
+        {{ .Summary | truncate 120 | safeHTML }}
+      </div>
+    {{ else }}
+      <p>点击阅读本周精选文章...</p>
+    {{ end }}
+  </div>
+  <a href="{{ .RelPermalink }}" class="more">开始阅读 →</a>
+</section>
+{{ else }}
+<section class="card medium" data-animate>
+  <h2>每周一文</h2>
+  <p class="card-content">暂无每周一文</p>
+</section>
+{{ end }}
+
 <!-- 联系方式 -->
 {{ $join := where .Site.RegularPages "Section" "join" | first 1 }}
 {{ range $join }}

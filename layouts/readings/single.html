@@ -1,0 +1,29 @@
+{{ define "main" }}
+<main class="readings-container">
+
+  <!-- 主体文章 -->
+  <article class="readings-card">
+
+    <!-- 文章标题 -->
+    <header class="readings-header">
+      <h1 class="readings-title">{{ .Title }}</h1>
+      {{ with .Date }}
+        <time class="readings-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+      {{ end }}
+    </header>
+
+    <!-- 正文内容 -->
+    <div class="readings-content">
+      {{ .Content }}
+    </div>
+
+  </article>
+
+  <!-- 右侧历史文章 -->
+  <aside class="sidebar right-sidebar">
+    <h3 class="sidebar-title">往期每周一文</h3>
+    {{ partial "past-readings.html" . }}
+  </aside>
+
+</main>
+{{ end }}
