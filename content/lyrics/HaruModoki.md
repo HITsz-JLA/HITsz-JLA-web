@@ -5,7 +5,7 @@ draft: false
 type: lyrics
 ---
 
-![专辑封面](/image/HaruMadoki.jpg)
+![专辑封面](/image/HaruModoki.jpg)
 
 <!--more-->
 
@@ -17,7 +17,7 @@ type: lyrics
 #### 编曲：北川勝利
 #### 作词：やなぎなぎ
 
-<audio controls src="/music/HaruMadoki.mp3"></audio>
+<audio controls src="/music/HaruModoki.mp3"></audio>
 
 <div class="music-buttons">
  <a href="https://music.163.com/song?id=32405870">网易云</a>
