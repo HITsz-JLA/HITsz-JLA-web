@@ -50,4 +50,3 @@ timeZone = "Asia/Shanghai"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON" ]
-
