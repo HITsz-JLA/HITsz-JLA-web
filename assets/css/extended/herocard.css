@@ -4,14 +4,17 @@
   justify-content: center;
   align-items: center;
   padding: 60px 20px;
-  background: var(--theme); /* 背景随主题 */
+  background: var(--theme);
+  /* 背景随主题 */
   overflow: hidden;
 }
 
 .hero-inner {
-  background: var(--entry); /* 卡片主体背景随主题 */
+  background: var(--entry);
+  /* 卡片主体背景随主题 */
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* 阴影可保持统一色调 */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  /* 阴影可保持统一色调 */
   padding: 50px 40px;
   text-align: center;
   max-width: 800px;
@@ -22,7 +25,8 @@
 /* 标题 */
 .hero-inner h1 {
   font-size: 3rem;
-  color: var(--accent); /* 主强调色 */
+  color: var(--accent);
+  /* 主强调色 */
   margin-bottom: 20px;
   transition: transform 0.3s ease;
 }
@@ -34,17 +38,21 @@
 /* 描述文字 */
 .hero-inner p {
   font-size: 1.25rem;
-  color: var(--primary); /* 文字颜色随主题 */
+  color: var(--primary);
+  /* 文字颜色随主题 */
   line-height: 1.6;
 }
 
 
 /* 浮动动画 */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
     box-shadow: 0 10px 25px var(--card-shadow, rgba(255, 182, 193, 0.3));
   }
+
   50% {
     transform: translateY(-10px);
     box-shadow: 0 20px 30px var(--card-shadow-hover, rgba(255, 182, 193, 0.35));
@@ -64,10 +72,9 @@
 
 .petal {
   position: absolute;
-  width: 15px;
-  height: 15px;
-  background: var(--petal-color, pink);
-  border-radius: 50%;
+  width: auto;
+  height: auto;
+  font-size: 1.5rem;
   opacity: 0.8;
   pointer-events: none;
   animation-name: fall;
@@ -75,11 +82,19 @@
   animation-iteration-count: infinite;
 }
 
+.petal::before {
+  content: "❄️";
+  /* Snowflake emoji */
+  display: block;
+  text-align: center;
+}
+
 @keyframes fall {
   0% {
     transform: translateY(-10px) rotate(0deg);
     opacity: 0.8;
   }
+
   100% {
     transform: translateY(100vh) rotate(360deg);
     opacity: 0;
@@ -91,9 +106,11 @@
   .hero-inner {
     padding: 30px 20px;
   }
+
   .hero-inner h1 {
     font-size: 2rem;
   }
+
   .hero-inner p {
     font-size: 1rem;
   }
