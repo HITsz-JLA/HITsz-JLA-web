@@ -5,15 +5,62 @@
       <a href="https://beian.miit.gov.cn/" target="_blank" style="margin-right:12px;">
         浙ICP备2025206493号
       </a>
-      <a
-        href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002008409"
-        rel="noreferrer"
-        target="_blank"
-        style="display:inline-flex; align-items:center; gap:6px;"
-      >
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002008409" rel="noreferrer" target="_blank"
+        style="display:inline-flex; align-items:center; gap:6px;">
         <img src="/image/beian.png" alt="备案图标" style="height:16px; display:block;" />
         粤公网安备44030002008409号
       </a>
     </p>
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightboxImageSelector = [
+      '.post-content img',
+      '.entry-content img',
+      '.card img',
+      '.grammar-content img',
+      '.summary img',
+      '.posts-content img',
+      '.lyrics-content img',
+      '.readings-content img'
+    ].join(', ');
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'image-lightbox';
+
+    const previewImage = document.createElement('img');
+    previewImage.alt = '';
+    lightbox.appendChild(previewImage);
+    document.body.appendChild(lightbox);
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open');
+      document.body.classList.remove('lightbox-open');
+      previewImage.removeAttribute('src');
+    };
+
+    document.body.addEventListener('click', (event) => {
+      const targetImage = event.target.closest(lightboxImageSelector);
+      if (!targetImage || targetImage.closest('.footer, .social-icons')) return;
+
+      if (targetImage.closest('a')) {
+        event.preventDefault();
+      }
+
+      const source = targetImage.currentSrc || targetImage.src;
+      if (!source) return;
+
+      previewImage.src = source;
+      lightbox.classList.add('is-open');
+      document.body.classList.add('lightbox-open');
+    });
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  });
+</script>

@@ -1,0 +1,47 @@
+.post-content img,
+.entry-content img,
+.card img,
+.grammar-content img,
+.summary img,
+.posts-content img,
+.lyrics-content img,
+.readings-content img {
+    cursor: zoom-in;
+}
+
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--theme);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.dark .image-lightbox {
+    background: var(--entry);
+}
+
+.image-lightbox.is-open {
+    opacity: 0.98;
+    visibility: visible;
+}
+
+.image-lightbox img {
+    max-width: min(92vw, 1400px);
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    cursor: default;
+    border-radius: var(--radius);
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
