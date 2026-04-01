@@ -7,7 +7,7 @@ defaultContentLanguageInSubdir = false
 	[languages.zh-cn]
 		languageName = "中文"
 		weight = 1
-timeZone = "Asia/Shanghai" 
+timeZone = "Asia/Tokyo" 
 [params]
 	defaultTheme = "auto"
 	disableThemeToggle = false
