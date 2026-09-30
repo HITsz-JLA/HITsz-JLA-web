@@ -1,0 +1,5 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}{{ title }} | HITsz 日语社审核{% endblock %}
+{% block branding %}<div id="site-name"><a href="{% url 'admin:index' %}">HITsz 日语社 · 内容审核</a></div>{% endblock %}
+{% block extrastyle %}{{ block.super }}<style>:root{--primary:#86415d;--secondary:#633147;--accent:#f6dce9;--header-color:#fff;--link-fg:#86415d;--link-selected-fg:#633147;--button-bg:#86415d;--default-button-bg:#633147;}#site-name a{color:#fff!important}</style>{% endblock %}

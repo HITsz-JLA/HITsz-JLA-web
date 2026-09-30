@@ -1,0 +1,28 @@
+{{ $kind := .kind }}
+<dialog class="community-dialog" id="{{ $kind }}-dialog" aria-labelledby="{{ $kind }}-title">
+  <header class="community-dialog-heading">
+    <h2 id="{{ $kind }}-title" tabindex="-1" autofocus>{{ .title }}</h2>
+    <button class="community-dialog-close" type="button" data-close-dialog aria-label="关闭{{ .title }}">×</button>
+  </header>
+  <form data-community-form data-kind="{{ $kind }}">
+    {{ if eq $kind "song" }}
+    <div class="community-field-row">
+      <div><label for="song-song_title">歌曲名称 <span class="community-required">必填</span></label><input id="song-song_title" name="song_title" maxlength="150" required placeholder="这首歌的名字"></div>
+      <div><label for="song-artist">歌手 / 演奏者 <span class="community-required">必填</span></label><input id="song-artist" name="artist" maxlength="100" required placeholder="演唱或演奏者"></div>
+    </div>
+    <label for="song-music_url">试听链接 <span class="community-optional">选填</span></label>
+    <input id="song-music_url" name="music_url" type="url" pattern="https://.*" maxlength="500" placeholder="粘贴网易云/QQ音乐/B站的歌曲链接">
+    {{ end }}
+    <label for="{{ $kind }}-body">{{ if eq $kind "feedback" }}想说的话 <span class="community-required">必填</span>{{ else }}推荐理由和日语语言知识点 <span class="community-optional">选填</span>{{ end }}</label>
+    <textarea id="{{ $kind }}-body" name="body" rows="5" {{ if eq $kind "feedback" }}minlength="5" required{{ end }} maxlength="2000" placeholder="{{ if eq $kind "feedback" }}留下你对社团的建议、活动心愿或想问的问题{{ else }}喜欢的歌词、旋律，或是和这首歌有关的故事……{{ end }}" aria-describedby="{{ $kind }}-body-count"></textarea>
+    <span class="community-counter" id="{{ $kind }}-body-count" data-body-count>0 / 2000</span>
+    <label for="{{ $kind }}-nickname">{{ if eq $kind "feedback" }}怎么称呼你{{ else }}推荐人署名{{ end }} <span class="community-optional">选填</span></label>
+    <input id="{{ $kind }}-nickname" name="nickname" maxlength="30" placeholder="留空即为匿名" autocomplete="off">
+    <div class="community-honeypot" aria-hidden="true"><label for="{{ $kind }}-website">个人网站</label><input id="{{ $kind }}-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <label class="community-consent"><input type="checkbox" name="consent" required><span>{{ if eq $kind "feedback" }}我了解留言经审核后会公开，并且没有填写电话、学号等个人敏感信息。{{ else }}我同意日语社审核并编辑推荐内容；如填写署名，选用时可以展示该署名。{{ end }}</span></label>
+    <button class="community-primary" type="submit" disabled>正在连接…</button>
+    <p class="community-status" data-form-status role="status" aria-live="polite" tabindex="-1"></p>
+    <button class="community-text-button" type="button" data-reconnect hidden>重新连接</button>
+  </form>
+  <p class="community-footnote">{{ if eq $kind "feedback" }}无需提供姓名或邮箱。服务会短期使用访问标识防止刷屏，访问日志按运维策略保留。{{ else }}投稿审核后进入候选曲目，不会立即公开，也不保证每首都被选用。{{ end }}</p>
+</dialog>

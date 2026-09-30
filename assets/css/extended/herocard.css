@@ -53,6 +53,7 @@
 
 /* 樱花动画 */
 .petals {
+  overflow-x: clip;
   position: absolute;
   top: 0;
   left: 0;

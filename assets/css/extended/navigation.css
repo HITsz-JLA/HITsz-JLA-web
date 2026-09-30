@@ -1,0 +1,22 @@
+.site-nav{--nav-divider:color-mix(in srgb,var(--primary) 20%,transparent);display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:24px;max-width:1280px;min-height:76px;padding:14px var(--gap);line-height:1.5;box-sizing:border-box}
+.site-nav .logo{margin:0;align-items:center;flex-wrap:nowrap;gap:4px}
+.site-nav .logo>a{font-size:24px;line-height:1.2;white-space:nowrap;letter-spacing:normal}
+.site-nav .logo-switches{margin:0;align-items:center}
+.site-nav button#theme-toggle{display:flex;align-items:center;justify-content:center;width:32px;height:36px;margin:0}
+.site-nav button#theme-toggle svg{width:24px;height:18px}
+.site-nav #menu{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;overflow:hidden;line-height:1.5;border:0;border-radius:0;white-space:nowrap}
+.site-nav #menu li{display:flex;min-width:0;border-inline-start:1px solid var(--nav-divider,var(--border))}
+.site-nav #menu li+li{margin-inline-start:0}
+.site-nav #menu li:nth-child(4n+1){border-inline-start:0}
+.site-nav #menu li:nth-child(n+5){border-top:1px solid var(--nav-divider,var(--border))}
+.site-nav #menu a{display:flex;align-items:center;justify-content:center;flex:1;min-width:0;min-height:44px;box-sizing:border-box;font-size:16px;padding:10px 8px;transition:background-color .15s}
+.site-nav #menu a:hover,.site-nav #menu a[aria-current]{background:var(--code-bg)}
+.site-nav #menu a:focus-visible{outline:2px solid currentColor;outline-offset:-3px}
+.site-nav a:focus-visible,.site-nav button:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:3px}
+.about-combined .about-section+.about-section{border-top:1px solid var(--border);padding-top:32px;margin-top:36px}
+.about-combined .about-section{scroll-margin-top:24px}
+.about-combined .about-section>h2{margin:0 0 20px;font-size:26px}
+/* Eight equal cells need room for the brand plus eight padded labels.
+   Touch-only devices keep the two-row menu, including landscape orientation. */
+@media(min-width:66rem) and (any-hover:hover){.site-nav #menu{grid-template-columns:repeat(8,minmax(0,1fr))}.site-nav #menu li:nth-child(n){border-top:0;border-inline-start:1px solid var(--nav-divider,var(--border))}.site-nav #menu li:first-child{border-inline-start:0}}
+@media(max-width:720px){.site-nav{grid-template-columns:1fr;gap:14px;padding:16px var(--gap)}.site-nav .logo{justify-content:center}.site-nav #menu a{font-size:clamp(11px,3.25vw,14px);padding:10px 3px}}

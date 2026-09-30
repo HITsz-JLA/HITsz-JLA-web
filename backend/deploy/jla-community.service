@@ -1,0 +1,22 @@
+[Unit]
+Description=HITsz JLA community submissions and moderation
+After=network.target
+
+[Service]
+User=jla-community
+Group=jla-community
+WorkingDirectory=/opt/jla-community/current/backend
+Environment=JLA_CONFIG_FILE=/etc/jla-community/config.json
+Environment=PYTHONUTF8=1
+ExecStart=/opt/jla-community/current/.venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8790 --workers 2 --threads 2 --timeout 30
+Restart=on-failure
+RestartSec=5
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/jla-community
+
+[Install]
+WantedBy=multi-user.target

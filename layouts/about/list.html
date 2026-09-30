@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="posts-container about-combined">
+  <article class="posts posts-card">
+    <header class="posts-header"><h1 class="posts-title">{{ .Title }}</h1></header>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">关于我们</h2>
+      {{ with site.GetPage "/about/about" }}<div class="posts-content">{{ .Content }}</div>{{ end }}
+    </section>
+    <section class="about-section" id="join" aria-labelledby="join-title">
+      <h2 id="join-title">加入我们</h2>
+      {{ with site.GetPage "/join/join" }}<div class="posts-content">{{ .Content }}</div>{{ end }}
+    </section>
+  </article>
+</div>
+{{ end }}

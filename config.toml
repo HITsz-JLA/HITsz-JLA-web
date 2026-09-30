@@ -1,4 +1,4 @@
-baseURL = "http://jpa.guramod.club/"
+baseURL = "https://hitszjla.club/"
 title = "HITsz日语社"
 theme = "PaperMod"
 defaultContentLanguage = "zh-cn"
@@ -17,6 +17,8 @@ timeZone = "Asia/Tokyo"
 	ShowPostNavLinks = true
 	ShowCodeCopyButtons = true
 	ShowFooter = true
+	[params.label]
+		text = "HITSZ日语社"
 	[params.footer]
   		
 
@@ -29,20 +31,38 @@ timeZone = "Asia/Tokyo"
 
 [menu] 
 	[[menu.main]]
-		name = "关于我们"
-		url = "about"
-	[[menu.main]]
-		name = "活动"
-		url = "events"
+		name = "关于&加入"
+		url = "about/"
+		weight = 10
 	[[menu.main]]
 		name = "公告"
-		url = "news"
+		url = "news/"
+		weight = 20
 	[[menu.main]]
-		name = "加入我们"
-		url = "join/join"
+		name = "活动"
+		url = "events/"
+		weight = 30
 	[[menu.main]]
-		name = "搜索"
-		url = "search"
+		name = "留言&投稿"
+		url = "participate/"
+		weight = 40
+	[[menu.main]]
+		name = "每周一曲"
+		url = "lyrics/"
+		weight = 50
+	[[menu.main]]
+		name = "每周一文"
+		url = "readings/"
+		weight = 60
+	[[menu.main]]
+		name = "每周文法"
+		url = "grammar/"
+		weight = 70
+	[[menu.main]]
+		identifier = "search"
+		name = "搜索内容"
+		url = "search/"
+		weight = 80
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

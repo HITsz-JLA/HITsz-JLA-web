@@ -1,0 +1,23 @@
+[Unit]
+Description=HITsz JLA moderation mail outbox worker
+After=network-online.target jla-community.service
+Wants=network-online.target
+
+[Service]
+User=jla-community
+Group=jla-community
+WorkingDirectory=/opt/jla-community/current/backend
+Environment=JLA_CONFIG_FILE=/etc/jla-community/config.json
+Environment=PYTHONUTF8=1
+ExecStart=/opt/jla-community/current/.venv/bin/python manage.py send_notifications --loop --interval 15
+Restart=on-failure
+RestartSec=10
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/jla-community
+
+[Install]
+WantedBy=multi-user.target

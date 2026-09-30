@@ -1,3 +1,48 @@
+# Hugo output and build cache (keep content/, assets/ and static/ in Git).
 /public/
+/resources/_gen/
+/.hugo_build.lock
+
+# Private mail input and local runtime: configs, credentials, database,
+# mail previews, backups, screenshots, virtualenv and deployment archives.
+/.local/
+/email/
+emailinfo.txt
+production-config.json
+admin-credentials*.txt
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Python environments and caches (keep backend code and migrations in Git).
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# SQLite databases, consistent backups and live journal/WAL sidecars.
+*.sqlite
+*.sqlite-*
+*.sqlite.*
+*.sqlite3
+*.sqlite3-*
+*.sqlite3.*
+
+# Alternate backend runtime locations; these are not source directories.
+/backend/staticfiles/
+/backend/data/
+/backend/mail-preview/
+/backend/backups/
+/backend/logs/
+
+# OS metadata.
 .DS_Store
-.local
+Thumbs.db
+Desktop.ini

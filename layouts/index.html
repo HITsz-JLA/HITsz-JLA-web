@@ -18,7 +18,7 @@
   <div class="card-content">
     {{ .Summary | safeHTML }} <!-- Hugo 会自动生成摘要 -->
   </div>
-  <a href="{{ .RelPermalink }}" class="more">查看更多 →</a>
+  <a href="{{ "about/" | relURL }}" class="more">查看更多 →</a>
 </section>
 {{ end }}
 
@@ -148,7 +148,7 @@
   <div class="card-content">
     {{ .Summary | truncate 100 | safeHTML }}
   </div>
-  <a href="{{ .RelPermalink }}" class="more">查看报名方式 →</a>
+  <a href="{{ "about/" | relURL }}#join" class="more">查看报名方式 →</a>
 </section>
 {{ end }}
 

@@ -1,0 +1,3 @@
+{{ $target := printf "%s?compose=%s" ("participate/" | relURL) . }}
+<p>留言与投稿已合并。<a href="{{ $target }}">前往留言&投稿</a></p>
+<script>window.location.replace({{ $target }});</script>

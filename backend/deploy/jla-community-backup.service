@@ -1,0 +1,15 @@
+[Unit]
+Description=Consistent backup of JLA community database
+
+[Service]
+Type=oneshot
+User=jla-community
+Group=jla-community
+WorkingDirectory=/opt/jla-community/current/backend
+Environment=JLA_CONFIG_FILE=/etc/jla-community/config.json
+ExecStart=/opt/jla-community/current/.venv/bin/python manage.py backup_database --directory /var/backups/jla-community
+UMask=0077
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/jla-community /var/backups/jla-community

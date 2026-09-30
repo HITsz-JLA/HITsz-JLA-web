@@ -44,6 +44,19 @@ function Write-DeploymentState {
     $Value | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $Path -Encoding utf8NoBOM
 }
 
+function Assert-CommunityReady {
+    # The existing static publisher does not install or start the new backend.
+    try {
+        $health = Invoke-RestMethod -Uri 'https://hitszjla.club/community/api/health/' -TimeoutSec 15
+        if ($health.ok -ne $true -or $health.service -ne 'jla-community' -or $health.api_version -ne 1) {
+            throw 'Unexpected community API response.'
+        }
+    }
+    catch {
+        throw 'Community backend is not ready. Follow scripts/COMMUNITY.md to install the backend and Nginx route before publishing the frontend.'
+    }
+}
+
 Push-Location $repo
 try {
     if ($Action -eq 'Install') {
@@ -71,6 +84,7 @@ rm -f -- '__FILE__'
 
     if ($Action -ne 'Deploy') {
         if ($Action -ne 'Status' -and -not $ReleaseId) { throw '-ReleaseId is required.' }
+        if ($Action -eq 'Publish') { Assert-CommunityReady }
         $result = Invoke-Server $Action.ToLowerInvariant() $ReleaseId
         $result | ConvertTo-Json -Depth 10
         return
@@ -91,6 +105,7 @@ rm -f -- '__FILE__'
     $commit = (Invoke-Checked git @('rev-parse', 'HEAD')).Trim()
     $remoteHead = (Invoke-Checked git @('ls-remote', 'origin', 'refs/heads/main')) -join ''
     if (($remoteHead -split '\s+')[0] -ne $commit) { throw 'HEAD differs from GitHub origin/main. Synchronize first.' }
+    Assert-CommunityReady
     $serverStatus = Invoke-Server status
     Write-Host "Current server release: $($serverStatus.current)"
 
