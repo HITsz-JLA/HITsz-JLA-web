@@ -156,10 +156,26 @@ cp -a /etc/nginx/sites-available/hitszjla /root/hitszjla-nginx-before-community.
 nano /etc/nginx/sites-available/hitszjla
 ```
 
-在该网站 **监听 443 的 HTTPS `server { ... }` 内**，与已有 `location` 同级添加一行，不要放进某个 `location` 中，也不要替换其他路由：
+该文件有多个 `server` 块，其中两个监听 443。请找到同时包含 **`listen 443 ssl;` 和 `server_name hitszjla.club;`** 的主域名配置块，在 `server_name hitszjla.club;` 下一行添加 include，与已有 `location` 同级。
+
+**不要加到 `server_name www.hitszjla.club;` 的配置块中**：它用于将 www 跳转到主域名。加错块时，`nginx -t` 仍会通过，但主域名的 `/community/api/health/` 会返回 404。也不要放进某个 `location` 中或替换其他路由。
 
 ```nginx
 include /etc/nginx/snippets/jla-community.conf;
+```
+
+添加后的主域名配置块应包含以下内容（其他原有配置保持不变）：
+
+```nginx
+server {
+    listen 443 ssl;
+    # 原有 IPv6、证书等配置……
+    server_name hitszjla.club;
+    include /etc/nginx/snippets/jla-community.conf;
+
+    root /var/www/HITsz-JLA-web/current;
+    # 原有 location 等配置……
+}
 ```
 
 保存后检查并重载：
