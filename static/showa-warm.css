@@ -1,0 +1,106 @@
+/* Warm Showa shopfront: amber light, hand-painted signs and paper ephemera. */
+body.showa{--paper:#decdab;--ink:#513728;--muted:#826349;--pink:#994937;--border:#a97e51;--blush:#d4be98;--lilac:#6a4632;--plum:#8f5137;background:#7c4b38}
+.showa .edition-bar{background:#5a3b2c;color:#dfcba9;border-bottom-color:#d7b57c55}
+.showa .edition-bar .back,.showa .edition-bar>span{color:#d2bd9e}
+.showa .edition-bar nav a{border-color:#d0b88d55}
+.showa .edition-bar nav a[aria-current=page]{background:#efe2c5;color:#733e30;border-color:#d3ba94}
+.showa .paper{background-color:#e3d4b8;background-image:radial-gradient(ellipse at 45% 0,#f0e2c999,transparent 65%),radial-gradient(#8d64311c .7px,transparent .9px),repeating-linear-gradient(90deg,#b6976410 0 1px,transparent 1px 28px);background-size:auto,5px 6px,auto;border-color:#b28a5d}
+.showa header{border-color:#a3764d}
+.showa .brand{color:#7f4033}
+.showa nav .active{background:#a04e39;border-color:#ae784c;color:#f1e7cc}
+.showa .search{border-color:#a97e51;color:#744331}
+.showa .card{background:#f2e7ce;border-color:#ab8255;box-shadow:3px 5px 0 #9c73462b,0 8px 24px #976b3c09}
+.showa .heading{border-color:#b490625f}
+.showa .heading h2{color:#8d4434}
+.showa .heading small{color:#8c6b4c}
+.showa .about{background:linear-gradient(145deg,#ebdab4,#f2e7ce 55%,#e8dcbf)}
+.showa .about .logo{border-color:#a57646;background:#f3ead2}
+.showa .about h2{color:#984d39}
+.showa .about .body{border-color:#cab38e}
+.showa .pill{background:#a0543d;color:#f0e6c8;border-color:#d6b178}
+.showa .primary{background:#9d4b39;border-color:#ad7b4b;color:#f0e5c8;box-shadow:inset 0 0 0 3px #9d4b39,inset 0 0 0 4px #dbba86}
+.showa .secondary{background:#f2e8d0;border-color:#ac8354;color:#8e4735;box-shadow:2px 2px 0 #cdb48950}
+.showa .deco{display:block;position:absolute;pointer-events:none;user-select:none;filter:drop-shadow(2px 4px 1px #63392428);height:auto;object-fit:contain;max-width:none}
+
+/* The illustrated shop window is an intentional collage, with its own clear area. */
+.showa .hero{background-color:#e2d1a7;background-image:radial-gradient(ellipse at 30% 45%,#efe5c5c9,transparent 62%),repeating-linear-gradient(0deg,#ac774211 0 1px,transparent 1px 7px);color:#793f30;border:4px double #a6794a;box-shadow:0 6px 0 #9e6c4940}
+.showa .hero-copy{width:61%;padding-top:14px;padding-bottom:24px}
+.showa .hero .kicker{color:#8f5939;border-bottom-color:#bb9463;font-size:10px;letter-spacing:1.4px}
+.showa .hero h1{color:#8a4634;font-size:41px;letter-spacing:1px;text-shadow:1px 2px #f4edd7;line-height:1.36;margin:12px 0}
+.showa .hero p{color:#7e553c;font-size:13px}
+.showa .hero .tags span{background:#efe4c5;color:#854c36;border-color:#b28a57;box-shadow:1px 2px #a0793c20}
+.showa .hero-bottom{color:#8f6643;border-color:#b68f5f70;font-size:9px;letter-spacing:1.5px;z-index:3}
+.showa .awning{position:absolute;display:flex;height:20px;left:-2px;right:-2px;top:-1px;filter:drop-shadow(0 3px 1px #875b3225);z-index:4;pointer-events:none}
+.showa .awning i{display:block;flex:1;background:#aa543c;border-radius:0 0 9px 9px;border-right:1px solid #8d513530}
+.showa .awning i:nth-child(even){background:#f0e6c8}
+.showa .awning i:nth-child(4n+1){background:#d39545}
+.showa .shop-collage{position:absolute;right:18px;top:28px;bottom:47px;width:37%;pointer-events:none}
+.showa .shop-sign{width:151px;right:4px;top:5px;transform:rotate(5deg)}
+.showa .club-seal{width:141px;left:0;top:6px;transform:rotate(-10deg)}
+.showa .fan{width:105px;left:37px;top:120px;transform:rotate(-18deg)}
+.showa .mini-ticket{position:absolute;right:2px;bottom:1px;background:#f1e8cd;border:2px solid #a1553e;outline:3px solid #f1e8cd;font-family:var(--serif);font-size:12px;letter-spacing:1px;padding:7px 11px;transform:rotate(-7deg);box-shadow:2px 5px #8b5f3430}
+.showa .spark{position:absolute;color:#a8573c;font-size:28px;text-shadow:1px 1px #f1e7cb}
+.showa .s1{left:148px;top:0}.showa .s2{left:8px;top:161px;font-size:25px;color:#cd8a41}.showa .s3{right:-8px;top:153px;font-size:19px}
+
+/* Small labels sit on card edges or in existing whitespace. */
+.showa .open-stamp{position:absolute;right:15px;top:17px;width:40px;height:48px;display:grid;place-content:center;text-align:center;border:3px double #a3513b;color:#9a4a38;background:#eee1bfe8;font:12px/1.3 var(--serif);transform:rotate(10deg);pointer-events:none}
+.showa .paper-tape{position:absolute;width:73px;height:19px;left:calc(50% - 36px);top:-11px;transform:rotate(-4deg);background:repeating-linear-gradient(45deg,#c793557d 0 6px,#d9b37991 6px 12px);border-left:1px dashed #b18659;border-right:1px dashed #b18659;pointer-events:none}
+.showa .notice .thumb{background:#dac7a7;border:1px solid #c4a174}
+.showa .notice .thumb b{color:#a14e3a}
+.showa .dept{padding-bottom:50px}
+.showa .dept b{background:#d6c4a2!important;color:#6c4934;border:1px solid #c4a072}
+.showa .dept-stamp{position:absolute;right:16px;bottom:13px;border:2px solid #9d573f;color:#97513b;font:11px var(--serif);letter-spacing:1px;padding:3px 9px;transform:rotate(-7deg);opacity:.85;pointer-events:none}
+.showa .social-daruma{width:67px;right:17px;bottom:22px;transform:rotate(8deg)}
+.showa .social .account{position:relative;z-index:1}
+.showa .social .account a,.showa .social .account strong{color:#974d3a}
+.showa .music{background-color:#694734;background-image:repeating-linear-gradient(88deg,#a87b4e22 0 2px,transparent 2px 10px),linear-gradient(125deg,#7b5138,#56382c);border-color:#b18a57;color:#f1e6cb}
+.showa .music .heading{border-color:#d9b77a66}
+.showa .music .heading h2,.showa .music .heading small{color:#e7d2a7}
+.showa .music .track h3{color:#f0e6c9}
+.showa .music .track p,.showa .music .counter,.showa .music .playback-note{color:#d3bea1}
+.showa .music .tracklinks,.showa .music .control{color:#e5cba1}
+.showa .music .toggle{background:#a34f3a;border-color:#deb475;color:#efe4c4}
+.showa .record{box-shadow:0 0 0 5px #cfa9693f,0 9px 15px #32202160}
+.showa .music-label{position:absolute;right:15px;top:80px;z-index:3;background:#ddbd79;color:#6a3c29;border:3px double #885539;outline:3px solid #ecddba;padding:5px 6px;font:10px/1.5 var(--serif);letter-spacing:1px;text-align:center;transform:rotate(13deg);box-shadow:2px 4px #2e1b1244;pointer-events:none}
+.showa .event .photo-frame{height:238px;position:relative;flex-shrink:0;margin-bottom:14px}
+.showa .event .event-photo{width:100%;height:100%;object-fit:cover;border:5px solid #e7dabb;outline-color:#b0895b;filter:sepia(.19) saturate(.93);margin:0}
+.showa .photo-frame:before,.showa .photo-frame:after{content:'';position:absolute;width:70px;height:16px;background:#d1ae72ab;top:-5px;z-index:2;pointer-events:none}
+.showa .photo-frame:before{left:10px;transform:rotate(-11deg)}
+.showa .photo-frame:after{right:12px;transform:rotate(12deg)}
+.showa .photo-stamp{position:absolute;bottom:11px;right:11px;border:3px double #9d533d;background:#efe4c3f0;color:#934636;padding:4px 10px;font:13px var(--serif);letter-spacing:2px;transform:rotate(-7deg);pointer-events:none}
+.showa .event .tag,.showa .readtag{background:#d1bb92;color:#824232}
+.showa .study h3{color:#683f2d}
+.showa .study .caption{color:#9d503b}
+.showa .study .quote{border-color:#c7a578;color:#88664d}
+.showa .reading-ticket{width:121px;right:26px;bottom:84px;transform:rotate(-7deg)}
+.showa .grammar-sticker{width:55px;right:30px;bottom:85px;transform:rotate(8deg)}
+.showa .grammar-list b{border-color:#b19066;background:#dac9a6!important;color:#854c38!important}
+.showa .guestboard{background-color:#f0e4c8;background-image:repeating-linear-gradient(0deg,#b9905010 0 1px,transparent 1px 27px);border-color:#a77f50}
+.showa .board-title{position:relative;border-color:#ae8858;min-height:104px;padding-right:130px}
+.showa .board-title>span{display:none}
+.showa .board-postcard{width:100px;right:12px;top:-14px;transform:rotate(8deg)}
+.showa .message{background:#f3ebd4;border-color:#b6986c;box-shadow:2px 3px #bd975a20}
+.showa .avatar{background:#9e503c;border-color:#d5b178;color:#eddfbe}
+.showa .reply{background:#dfd1b3;border-color:#9f724d}
+.showa .reply strong{color:#885439}
+.showa .topic-box{position:relative;background:#dccaa5;padding-right:145px}
+.showa .topic-box h3{color:#7b4934}
+.showa .topic-radio{width:110px;right:20px;top:32px;transform:rotate(7deg)}
+.showa .topic-box .topics{position:relative;z-index:1;flex-wrap:wrap}
+.showa .topics .secondary{min-width:100px;flex:1;font-size:11px}
+.showa .composer{background:#d6c3a0;border-color:#ab8758}
+.showa .compose-tabs button{background:#f1e7cc;border-color:#a98354;color:#8b4e39}
+.showa .compose-tabs button[aria-selected=true]{background:#964b3a;color:#efe4c5}
+.showa .shop-closing{position:relative;display:flex;justify-content:center;align-items:center;flex-direction:column;gap:6px;height:126px;padding-left:60px;margin-top:20px;color:#8b553b}
+.showa .shop-closing>span{font-family:var(--serif);font-size:18px;letter-spacing:3px}
+.showa .shop-closing>small{font-size:11px;letter-spacing:2px;color:#967353}
+.showa .closing-coffee{width:78px;left:calc(50% - 219px);top:19px;transform:rotate(-8deg)}
+.showa .footer{margin-top:0;border-color:#b08e61;color:#836346}
+.showa .credits-link{color:#836346}
+
+@media(max-width:1250px) and (min-width:1101px){.showa .shop-collage{width:34%;right:14px}.showa .shop-sign{width:123px;top:20px}.showa .club-seal{width:110px;left:-5px;top:5px}.showa .fan{width:89px;left:9px;top:114px}.showa .mini-ticket{font-size:10px;right:0;bottom:5px}.showa .s1{left:108px}.showa .hero h1{font-size:36px!important}.showa .hero-copy{width:65%}}
+@media(max-width:1100px){.showa .hero{height:auto;min-height:340px}.showa .hero-copy{width:100%;max-width:none;min-height:264px;padding-right:105px}.showa .hero h1{font-size:32px!important}.showa .shop-collage{width:100px;right:14px;top:46px;bottom:40px}.showa .shop-sign{width:85px;right:0;top:22px}.showa .club-seal{width:75px;left:0;top:145px}.showa .fan,.showa .mini-ticket,.showa .spark{display:none}.showa .hero .tags{flex-wrap:wrap}.showa .hero .kicker{max-width:90%;font-size:9px}.showa .social-daruma{width:56px}.showa .dept{padding-bottom:55px}.showa .reading-ticket{width:92px;bottom:84px;right:20px}.showa .grammar-sticker{width:50px}.showa .event .photo-frame{height:260px}.showa .topic-box{padding-right:24px;padding-top:74px}.showa .topic-radio{width:82px;top:-14px;right:21px}.showa .board-postcard{width:86px}.showa .board-title{padding-right:105px}}
+@media(max-width:800px){.showa .hero-copy{width:62%;padding-right:0}.showa .hero h1{font-size:34px!important}.showa .hero{min-height:350px}.showa .shop-collage{width:31%;top:35px;right:24px}.showa .shop-sign{width:128px;top:2px;right:0}.showa .club-seal{width:100px;top:150px;left:-22px}.showa .hero .kicker{max-width:none}.showa .social-daruma{bottom:20px;right:25px;width:75px}.showa .event .photo-frame{height:180px}.showa .reading-ticket{width:95px;bottom:76px}.showa .board-title{min-height:115px}.showa .topic-box{padding-top:26px;padding-right:145px}.showa .topic-radio{top:28px;width:106px}.showa .social{padding-right:115px}}
+@media(max-width:600px){.showa .hero{padding:33px 22px 30px;min-height:430px}.showa .hero-copy{min-height:280px;width:100%;padding:0 0 65px}.showa .hero h1{font-size:31px!important;letter-spacing:0}.showa .hero p{max-width:100%;font-size:12px}.showa .hero .kicker{font-size:8px!important;letter-spacing:1px}.showa .hero .tags{gap:6px}.showa .hero .tags span{font-size:8px;padding:4px 6px}.showa .shop-collage{top:auto;bottom:44px;right:22px;left:22px;height:94px;width:auto}.showa .shop-sign{width:69px;top:-3px;right:2px;transform:rotate(7deg)}.showa .club-seal{width:79px;top:5px;left:4px;transform:rotate(-8deg)}.showa .fan{display:block;width:67px;left:112px;top:2px;transform:rotate(-18deg)}.showa .s1{display:block;left:auto;right:79px;top:47px;font-size:18px}.showa .hero-bottom{left:22px;right:22px;font-size:7px;letter-spacing:.5px;bottom:14px}.showa .awning{height:15px}.showa .awning i{min-width:15px}.showa .social{padding-right:95px}.showa .social-daruma{width:60px;right:18px}.showa .reading-ticket{width:93px;bottom:78px;right:20px;opacity:.95}.showa .grammar-sticker{width:47px;right:23px;bottom:79px}.showa .event .photo-frame{height:210px}.showa .board-title{padding-right:0;padding-top:10px;min-height:145px}.showa .board-title h2{padding-right:75px}.showa .board-title p{padding-right:0;margin-top:24px}.showa .board-postcard{width:65px;right:-3px;top:-10px}.showa .topic-box{padding-top:76px;padding-right:20px}.showa .topic-radio{width:94px;right:17px;top:-10px}.showa .shop-closing{height:140px;padding-left:50px}.showa .shop-closing>span{font-size:13px;letter-spacing:0}.showa .shop-closing>small{font-size:9px;letter-spacing:1px}.showa .closing-coffee{width:56px;left:8px;top:35px}}
+.showa .reading-ticket{top:61px;bottom:auto;width:95px;right:24px}
+.showa .grammar-sticker{top:103px;bottom:auto;width:43px;right:25px}

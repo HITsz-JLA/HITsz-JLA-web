@@ -123,6 +123,7 @@
   const list = document.getElementById('feedback-list');
   const next = document.getElementById('load-more');
   const retry = document.getElementById('retry-list');
+  const homeLimit = page.dataset.communityPage === 'home' ? 3 : 0;
   let currentPage = 0;
   let loading = false;
   const node = (tag, className, text) => {
@@ -153,11 +154,11 @@
     try {
       const data = await request(`/community/api/feedback/?page=${currentPage + 1}`);
       if (currentPage === 0) list.replaceChildren();
-      data.items.forEach(item => list.append(renderNote(item)));
+      (homeLimit ? data.items.slice(0, homeLimit) : data.items).forEach(item => list.append(renderNote(item)));
       if (!data.total) list.append(node('div', 'community-empty', '这里还没有公开留言。欢迎分享你的想法。'));
       document.getElementById('public-count').textContent = `${data.total} 条公开留言`;
       currentPage = data.page;
-      next.hidden = !data.has_next;
+      next.hidden = homeLimit > 0 || !data.has_next;
     } catch {
       if (currentPage === 0) list.replaceChildren(node('div', 'community-empty', '暂时无法读取留言，请稍后再试。'));
       retry.hidden = false;

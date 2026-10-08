@@ -1,15 +1,1 @@
-{{ define "main" }}
-<div class="posts-container about-combined">
-  <article class="posts posts-card">
-    <header class="posts-header"><h1 class="posts-title">{{ .Title }}</h1></header>
-    <section class="about-section" id="about" aria-labelledby="about-title">
-      <h2 id="about-title">关于我们</h2>
-      {{ with site.GetPage "/about/about" }}<div class="posts-content">{{ .Content }}</div>{{ end }}
-    </section>
-    <section class="about-section" id="join" aria-labelledby="join-title">
-      <h2 id="join-title">加入我们</h2>
-      {{ with site.GetPage "/join/join" }}<div class="posts-content">{{ .Content }}</div>{{ end }}
-    </section>
-  </article>
-</div>
-{{ end }}
+{{ define "main" }}{{ partial "site/hero.html" . }}<section class="about-spread"><div><span class="eyebrow">HITsz 日本語サークル / SINCE 2018</span><h2>从一句「こんにちは」，<br>到一群志同道合的朋友。</h2><p>HITsz 日语社成立于 2018 年，是一个热爱日本语言与文化的学生社团。我们定期举办 KTV、观影、讲座、日语学习等活动，也欢迎零基础的同学加入。</p><p>不必先成为“很懂的人”。带着一点好奇、一个喜欢的故事，或一首最近常听的歌，就可以开始。</p><div class="action-row"><a class="secondary" href="{{ "events/" | relURL }}">翻翻我们的社团日记 →</a></div></div><img src="{{ "assets/club-photo.webp" | relURL }}" alt="日语社 2026 年招新合影"></section><div class="section-heading"><h2>找到你的同好</h2><small>好きなもの、つながる。</small></div><div class="dept-grid"><article class="dept-box"><b>01</b><h3>文学部</h3><p>从严肃文学到轻小说，在文字、放映与讨论中分享喜欢。</p></article><article class="dept-box"><b>02</b><h3>二偶部</h3><p>面向喜爱二次元偶像的同好，一起交流作品与应援文化。</p></article><article class="dept-box"><b>03</b><h3>东方部</h3><p>面向东方 Project 企划爱好者，在同好的话题中相遇。</p></article></div><div class="section-heading"><h2>把这份喜欢，带进日常</h2><small>一緒に、好きなことを。</small></div><section class="join-box" id="join"><img class="charm" src="{{ "assets/shinto/omamori.svg" | relURL }}" alt="" aria-hidden="true"><div><span class="eyebrow">零基础也欢迎 / 加群即入社</span><h2>下一次相遇，等你来。</h2><p>先加入社团 QQ 群，兴趣部门的加入方式可在群公告中了解。</p><div class="group-number">743458223</div><button class="secondary" type="button" data-copy="743458223">复制 QQ 群号</button><p class="form-status" data-copy-status aria-live="polite"></p></div><img class="qr" src="{{ "image/qqGroupQrcode.jpg" | relURL }}" alt="日语社 QQ 群二维码，群号 743458223"></section><div class="section-heading"><h2>在别处，也能找到我们</h2><small>来串门吧</small></div><div class="social-links"><a href="https://space.bilibili.com/3632313818679469" target="_blank" rel="noopener">bilibili · hitsz日语社 ↗</a><a href="https://www.xiaohongshu.com/user/profile/68b8185700000000190208a8" target="_blank" rel="noopener">小红书 · hitsz日语社 ↗</a><span class="secondary">微信公众号 · hit日语社 sz</span></div>{{ end }}

@@ -15,6 +15,42 @@ from .models import ModerationLog, Notification, Submission
 from .services import moderate
 
 
+class LocalAudioPreviewTests(TestCase):
+    def test_byte_ranges_support_metadata_and_seeking(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        from django.test import RequestFactory
+        from config.local_preview import serve_file
+
+        factory = RequestFactory()
+        audio = b'0123456789'
+        with TemporaryDirectory() as directory:
+            Path(directory, 'audio.mp3').write_bytes(audio)
+            for value, expected in [('bytes=0-3', b'0123'), ('bytes=7-', b'789'),
+                                    ('bytes=-3', b'789'), ('bytes=8-99', b'89')]:
+                with self.subTest(range=value):
+                    response = serve_file(directory, 'audio.mp3', factory.get('/', HTTP_RANGE=value))
+                    try:
+                        self.assertEqual(response.status_code, 206)
+                        self.assertEqual(b''.join(response.streaming_content), expected)
+                        self.assertEqual(int(response['Content-Length']), len(expected))
+                        self.assertEqual(response['Accept-Ranges'], 'bytes')
+                    finally:
+                        response.close()
+            for value in ['bytes=10-', 'bytes=5-3', 'bytes=-0']:
+                response = serve_file(directory, 'audio.mp3', factory.get('/', HTTP_RANGE=value))
+                self.assertEqual(response.status_code, 416)
+                self.assertEqual(response['Content-Range'], 'bytes */10')
+            # Malformed/multipart ranges are ignored; the full file remains available.
+            for value in ['', 'bytes=abc', 'bytes=0-1,3-4']:
+                response = serve_file(directory, 'audio.mp3', factory.get('/', HTTP_RANGE=value))
+                try:
+                    self.assertEqual(response.status_code, 200)
+                    self.assertEqual(b''.join(response.streaming_content), audio)
+                finally:
+                    response.close()
+
+
 @override_settings(FORM_MIN_SECONDS=0)
 class CommunityTests(TestCase):
     def setUp(self):

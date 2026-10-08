@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="640" viewBox="0 0 360 640">
+<defs>
+ <pattern id="rush" width="24" height="8" patternUnits="userSpaceOnUse">
+  <rect width="24" height="8" fill="#d5cfaf"/>
+  <path d="M0 .5H24M0 4.5H24" stroke="#aeac89" stroke-opacity=".46" stroke-width="1"/>
+  <path d="M0 2H24M0 6H24" stroke="#e8dfc2" stroke-opacity=".75" stroke-width="1.1"/>
+  <path d="M5 0v4m12 0v4" stroke="#8f997c" stroke-width="1" stroke-opacity=".38"/>
+  <path d="M6 0v4m12 0v4" stroke="#e9e1c9" stroke-width=".75" stroke-opacity=".7"/>
+ </pattern>
+ <pattern id="edge" width="12" height="18" patternUnits="userSpaceOnUse">
+  <rect width="12" height="18" fill="#b0b19a"/>
+  <path d="m6 1 5 8-5 8-5-8Z" stroke="#c4c4a7" stroke-width=".75" fill="none" opacity=".65"/>
+  <path d="M1 0v18M11 0v18" stroke="#9b9e86" stroke-opacity=".58" stroke-width=".6"/>
+ </pattern>
+</defs>
+<rect width="360" height="640" fill="url(#rush)"/>
+<path d="M16 0h41v640H16ZM144 0h36v640h-36ZM259 0h30v640h-30Z" fill="#ede0bf" opacity=".12"/>
+<path d="M82 0h26v640H82ZM217 0h19v640h-19Z" fill="#818f71" opacity=".06"/>
+<rect x="0" width="10" height="640" fill="url(#edge)"/>
+<path d="M10.5 0v640M359.5 0v640" stroke="#838c73" stroke-opacity=".32" stroke-width="1"/>
+<path d="M11 .5H360M11 639.5H360" stroke="#898e73" stroke-opacity=".22" stroke-width="1"/>
+</svg>

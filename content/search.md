@@ -1,8 +1,6 @@
 ---
-title: "Search" # in any language you want
-layout: "search" # necessary for search
-url: "/search"
-# description: "Description for Search"
-summary: "search"
-placeholder: "placeholder text in search input box"
+title: "搜索"
+layout: search
+url: /search/
+description: "搜索日语社的歌曲、文章、活动和文法。"
 ---

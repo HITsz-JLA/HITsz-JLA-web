@@ -1,0 +1,7 @@
+{{ $content := printf "%s" .Content }}{{ $cover := "" }}{{ $audio := "" }}
+{{ with findRE `<img\b[^>]*src="[^"]+"` $content 1 }}{{ $cover = replaceRE `^.*src="([^"]+)".*$` "$1" (index . 0) }}{{ end }}
+{{ with findRE `<audio\b[^>]*src="[^"]+"` $content 1 }}{{ $audio = replaceRE `^.*src="([^"]+)".*$` "$1" (index . 0) }}{{ end }}
+{{ $title := replaceRE `^每周一文[：:]\s*|^【[^】]+】\s*` "" .Title }}{{ $title = replaceRE `[🎬🧭🌸]` "" $title | strings.TrimSpace }}
+{{ $parts := split (replaceRE `\s*-\s+` "|||" $title) "|||" }}{{ $artist := delimit (after 1 $parts) " - " }}{{ $album := index $parts 0 }}
+{{ with findRE `<h4\b[^>]*>专辑[：:][^<]+</h4>` $content 1 }}{{ $album = replaceRE `^.*>专辑[：:]([^<]+)</h4>$` "$1" (index . 0) | htmlUnescape }}{{ end }}
+{{ return (dict "title" $title "songTitle" (index $parts 0) "artist" $artist "album" $album "cover" $cover "audio" $audio) }}

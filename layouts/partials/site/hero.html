@@ -1,0 +1,2 @@
+{{ $data := partial "site/info.html" . }}{{ $info := $data.info }}
+<div class="crumbs" aria-label="当前位置"><a href="{{ "/" | relURL }}">首页</a><span>/</span><span>{{ index $info 0 }}</span></div><section class="page-hero"><div class="page-hero-copy"><span class="folio">HITsz JLA / {{ index $info 1 }}</span><h1>{{ index $info 0 }}</h1><p>{{ index $info 2 }}</p></div><div class="page-hero-art"><img src="{{ printf "assets/shinto/%s.svg" (index $info 3) | relURL }}" alt="" aria-hidden="true"><span class="vertical-sign" lang="ja">日々是好日</span></div></section>

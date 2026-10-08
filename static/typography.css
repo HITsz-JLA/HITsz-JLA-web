@@ -1,0 +1,21 @@
+/* Self-hosted Noto Serif SC/JP. Both provide real 200–900 weight variations. */
+@font-face{font-family:'JLA Serif SC';src:url('assets/fonts/noto-serif-sc.woff2') format('woff2');font-style:normal;font-weight:200 900;font-display:swap}
+@font-face{font-family:'JLA Serif JP';src:url('assets/fonts/noto-serif-jp.woff2') format('woff2');font-style:normal;font-weight:200 900;font-display:swap}
+/* Complete fallbacks cover future posts without a font-processing build dependency. */
+@font-face{font-family:'JLA Serif SC Full';src:url('assets/fonts/noto-serif-sc-full.woff2') format('woff2');font-style:normal;font-weight:200 900;font-display:swap}
+@font-face{font-family:'JLA Serif JP Full';src:url('assets/fonts/noto-serif-jp-full.woff2') format('woff2');font-style:normal;font-weight:200 900;font-display:swap}
+:root{
+  --serif:'JLA Serif SC','JLA Serif SC Full','JLA Serif JP','JLA Serif JP Full','Noto Serif CJK SC','Songti SC','Yu Mincho',SimSun,serif;
+  --serif-ja:'JLA Serif JP','JLA Serif JP Full','JLA Serif SC','JLA Serif SC Full','Noto Serif CJK JP','Yu Mincho','Hiragino Mincho ProN','Songti SC',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Yu Gothic','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
+}
+input,select,textarea{font-family:inherit}
+/* Keep a whole Japanese caption in one family and one weight. */
+.showa.fusion .brand-words small,.showa.fusion .shop-marquee,
+.showa.fusion .heading small,.showa.fusion .about h2,
+.showa.fusion .music .track h3,.showa.fusion .reading-card h3,
+.showa.fusion .hero-caption,.showa.fusion .shop-closing>span{font-family:var(--serif-ja);font-synthesis:none}
+.showa.fusion .brand-words small{font-weight:400;letter-spacing:.08em;line-height:1.7}
+.showa.fusion .shop-marquee,.showa.fusion .shop-marquee b{font-weight:400;line-height:1.7}
+.showa.fusion .heading small{font-weight:400}
+.showa.fusion .about h2{font-weight:700}

@@ -46,3 +46,12 @@ htmlcov/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Editor backups and local frontend inspection output are never publishable source.
+*.save
+*.bak
+*.orig
+*~
+node_modules/
+/test-results/
+/playwright-report/

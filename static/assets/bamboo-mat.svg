@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="192" viewBox="0 0 144 192">
+<defs>
+ <linearGradient id="slat"><stop stop-color="#b9a98a"/><stop offset=".14" stop-color="#dac9a9"/><stop offset=".45" stop-color="#dfcfb3"/><stop offset=".86" stop-color="#d3c3a3"/><stop offset="1" stop-color="#c1b091"/></linearGradient>
+ <pattern id="bamboo" width="18" height="192" patternUnits="userSpaceOnUse">
+  <rect width="18" height="192" fill="url(#slat)"/>
+  <path d="M.5 0V192M17.5 0V192" stroke="#9e8b68" stroke-opacity=".32" stroke-width=".7"/>
+  <path d="M4 0 4.7 49 4 95 4.8 144 4 192M10 0 9.4 39 10.4 85 9.7 131 10 192M14 0 13.7 54 14.5 116 14 192" fill="none" stroke="#927e56" stroke-opacity=".13" stroke-width=".5"/>
+  <path d="M6 15V52m1 12v49m5 11v55m-5-45v36" stroke="#f2e6cd" stroke-opacity=".5" stroke-width=".8"/>
+ </pattern>
+ <pattern id="binding" width="18" height="96" patternUnits="userSpaceOnUse">
+  <path d="M0 46.5H18M0 48.5H18" stroke="#988766" stroke-width=".75" stroke-opacity=".42"/>
+  <path d="m1 45 2 5m-1-5 2 5m11-5 2 5" stroke="#8a7859" stroke-width=".65" stroke-opacity=".42"/>
+  <path d="M4 47.5H14" stroke="#eee0c4" stroke-width=".8" stroke-opacity=".64"/>
+ </pattern>
+</defs>
+<rect width="144" height="192" fill="url(#bamboo)"/>
+<path d="M20 0h13v192H20ZM75 0h10v192H75ZM113 0h9v192h-9Z" fill="#f3e5c9" opacity=".12"/>
+<path d="M42 0h10v192H42ZM94 0h7v192h-7Z" fill="#907c59" opacity=".07"/>
+<path d="M19 121q8-2 16 0m20-89q7 2 14 0m22 122q7-2 15 0m20-131q8 2 15 0" stroke="#a9936d" stroke-width="1.2" opacity=".28" fill="none"/>
+<rect width="144" height="192" fill="url(#binding)"/>
+</svg>

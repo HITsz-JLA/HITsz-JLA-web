@@ -1,0 +1,21 @@
+/* Production integration: keep dialogs independent of the decorative header. */
+.standalone .footer{flex-wrap:wrap;gap:12px;line-height:1.8}
+.standalone .footer .legal{flex-basis:100%;text-align:center;font-size:11px}
+.standalone .footer .legal img{vertical-align:middle}
+.standalone .community-page{--primary:#543d32;--secondary:#805b45;--entry:#f7e6cf;--theme:#fff3df;--border:#c79471;--community-accent:#973e2a;--community-soft:#edd0b6;--community-line:#c79471;padding-bottom:0}
+.standalone .community-page h2{color:#953e2c}
+.standalone .community-dialog{border-radius:4px;border:3px double #a76c48;box-shadow:0 24px 80px #301b1970;padding:24px}
+.standalone .community-dialog-heading{position:static;height:auto;margin-bottom:18px;padding:0;background:transparent;flex-direction:row;width:auto}
+.standalone .community-page .community-dialog-heading h2{margin:0;font-size:24px}
+.standalone .community-actions{margin:20px 0}
+.standalone .community-compose,.standalone .community-primary,.standalone .community-secondary,.standalone .community-note,.standalone .community-empty{border-radius:3px}
+.standalone .community-wall{margin-top:16px}
+.standalone .community-note{border:1px solid #c9957b;background:#f8e7d2}
+.standalone .community-dialog button{min-height:42px}
+.standalone .community-dialog .community-text-button{border:0;background:transparent}
+.standalone .community-page .community-honeypot{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.standalone .song-intro .eyebrow{color:#e6c88b}
+.standalone .article-body img{height:auto;max-width:100%}
+.standalone .article-body audio{width:100%;max-width:100%}
+.standalone .community-field-row{min-width:0}
+@media(max-width:600px){.standalone .community-field-row{grid-template-columns:1fr}.standalone .community-dialog{padding:18px}.standalone .community-actions{gap:10px}}

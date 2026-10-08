@@ -52,6 +52,9 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
+      - name: Check release preparation and rollback on Linux
+        run: python3 scripts/test_server_deploy.py
+
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -61,6 +64,12 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --gc   # 可選：啟用 garbage collection 減少記憶體使用
+
+      - name: Check production output
+        run: python3 scripts/check_site.py public
+
+      - name: Check playlist player
+        run: node scripts/test_player.mjs public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

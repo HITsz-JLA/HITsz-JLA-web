@@ -1,0 +1,1 @@
+<aside class="side-note"><h2>学习导航</h2><a href="{{ "/grammar/" | relURL }}">全部文法与期数 →</a>{{ range (where .Site.RegularPages "Section" "grammarlevel").ByTitle }}<a href="{{ .RelPermalink }}">{{ replace .Title "N4N5" "N4 / N5" }} · 等级文法</a>{{ end }}<img src="{{ "assets/shinto/omamori.svg" | relURL }}" alt="" class="side-art"><p>毎週、少しずつ。<br>一次学一点，也是一种进步。</p></aside>

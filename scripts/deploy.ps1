@@ -4,7 +4,7 @@ param(
     [ValidateSet('Deploy', 'Install', 'Status', 'Publish', 'Rollback', 'Cleanup')]
     [string]$Action = 'Deploy',
     [string]$ReleaseId,
-    [string[]]$CheckPath = @(),
+    [string[]]$CheckPath = @('/', '/lyrics/', '/readings/', '/grammar/', '/participate/', '/search/', '/search-data.json'),
     [switch]$PrepareOnly
 )
 
@@ -137,6 +137,15 @@ rm -f -- '__FILE__'
     }
     Invoke-Checked hugo @('--source', $source, '--destination', $build,
         '--baseURL', 'https://hitszjla.club/', '--environment', 'production', '--minify') | Out-Host
+
+    # Validate the exact archived build before any release upload is requested.
+    $validatorPython = Join-Path $repo '.local/community/venv/Scripts/python.exe'
+    if (-not (Test-Path -LiteralPath $validatorPython)) {
+        $pythonCommand = Get-Command python3, python -ErrorAction SilentlyContinue | Select-Object -First 1
+        if (-not $pythonCommand) { throw 'Python 3 is required for the production output check.' }
+        $validatorPython = $pythonCommand.Source
+    }
+    Invoke-Checked $validatorPython @((Join-Path $source 'scripts/check_site.py'), $build) | Out-Host
 
     $files = [ordered]@{}
     foreach ($file in Get-ChildItem -LiteralPath $build -Recurse -File | Sort-Object FullName) {

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="114" height="208" viewBox="0 0 114 208"><g stroke-linecap="round" stroke-linejoin="round"><path d="M56 3v24" stroke="#604a36" stroke-width="3"/><path d="M32 27h47v13H32ZM32 165h47v13H32Z" fill="#704b35" stroke="#eadbc0" stroke-width="3"/>
+<path d="M56 36C19 36 11 63 11 100s10 67 45 67 47-30 47-67-10-64-47-64Z" fill="#a23825" stroke="#f2e4c8" stroke-width="6"/>
+<path d="M23 58q33 13 67 0M15 78q41 14 83 0M14 103q41 13 86 0M17 127q40 12 80 0M24 147q30 8 66 0" fill="none" stroke="#6f4234" stroke-opacity=".45" stroke-width="2"/>
+<path d="M36 43q-15 57 0 113m40-113q15 57 0 113" fill="none" stroke="#e8b879" stroke-opacity=".48" stroke-width="2"/>
+<text x="57" y="118" text-anchor="middle" font-family="Yu Mincho,SimSun,serif" font-size="37" font-weight="bold" fill="#f7e7c3">縁</text>
+<path d="M56 179v24m-8-24-4 20m20-20 4 20" stroke="#b49158" stroke-width="3"/></g></svg>

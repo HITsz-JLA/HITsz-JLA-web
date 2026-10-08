@@ -1,17 +1,18 @@
+enableRobotsTXT = true
 baseURL = "https://hitszjla.club/"
 title = "HITsz日语社"
 theme = "PaperMod"
 defaultContentLanguage = "zh-cn"
 defaultContentLanguageInSubdir = false
-[languages] 
+[languages]
 	[languages.zh-cn]
 		languageName = "中文"
 		weight = 1
-timeZone = "Asia/Tokyo" 
+timeZone = "Asia/Tokyo"
 [params]
 	defaultTheme = "auto"
 	disableThemeToggle = false
-	ShowReadingTime = false 
+	ShowReadingTime = false
 	description = "日本文化 × 言语"
 	customCSS = ["/css/custom.css"]
 	ShowPostNavLinks = true
@@ -20,7 +21,7 @@ timeZone = "Asia/Tokyo"
 	[params.label]
 		text = "HITSZ日语社"
 	[params.footer]
-  		
+
 
 
 
@@ -29,7 +30,7 @@ timeZone = "Asia/Tokyo"
 	Title = "🌸 ようこそ！HITSZ日语社へ"
 	Content = "ここでは私たちの活動・イベント・文化を紹介します。"
 
-[menu] 
+[menu]
 	[[menu.main]]
 		name = "关于&加入"
 		url = "about/"
@@ -69,4 +70,10 @@ timeZone = "Asia/Tokyo"
       unsafe = true
 
 [outputs]
-home = [ "HTML", "RSS", "JSON" ]
+home = [ "HTML", "RSS", "JSON", "SearchData" ]
+
+[outputFormats.SearchData]
+mediaType = "application/json"
+baseName = "search-data"
+isPlainText = true
+notAlternative = true

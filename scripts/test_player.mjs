@@ -1,0 +1,103 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import path from 'node:path';
+const directory=path.resolve(process.argv[2]||'.local/launch/public');
+const home=fs.readFileSync(path.join(directory,'index.html'),'utf8');
+const playlistMarkup=home.match(/<div\b[^>]*\bid=(?:"featured-playlist"|featured-playlist)[^>]*>([\s\S]*?)<\/div>/)?.[1];
+assert.ok(playlistMarkup,'Rendered homepage must contain a playlist');
+const decode=s=>s.replace(/&(?:amp|quot|apos|lt|gt|#(\d+)|#x([0-9a-f]+));/gi,(whole,decimal,hex)=>decimal?String.fromCodePoint(Number(decimal)):hex?String.fromCodePoint(parseInt(hex,16)):({'&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>'}[whole]||whole));
+const tracks=[...playlistMarkup.matchAll(/<a\b([^>]+)>/g)].map(m=>{const a=Object.fromEntries([...m[1].matchAll(/([\w-]+)=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)].map(x=>[x[1],decode(x[2]??x[3]??x[4])]));return {title:a['data-title'],artist:a['data-artist'],album:a['data-album'],date:a['data-date'],cover:a['data-cover'],audio:a['data-src'],url:a.href};});
+assert.ok(tracks.length>1);
+assert.equal(tracks.length,JSON.parse(fs.readFileSync(path.join(directory,'search-data.json'))).filter(p=>p.section==='lyrics').length);
+assert.ok(tracks.every(track=>track.audio.includes('/music/')&&track.url.includes('/lyrics/')));
+
+
+class Element {
+  handlers = {}; attrs = {}; style = {setProperty(name,value){this[name]=value;}}; dataset = {}; textContent = ''; value = '0';
+  addEventListener(event, callback) { (this.handlers[event] ||= []).push(callback); }
+  setAttribute(name, value) { this.attrs[name] = value; }
+  getAttribute(name) { return this.attrs[name]; }
+  emit(event) { return Promise.all((this.handlers[event] || []).map(callback => callback({}))); }
+}
+const elements = Object.fromEntries(['record','toggle','play-icon','featured-audio','playback-status','featured-playlist','previous-track','next-track','track-counter','track-title','track-artist','track-album','track-cover','track-detail','track-seek','track-elapsed','track-duration'].map(id => [id, new Element()]));
+elements['featured-playlist'].querySelectorAll=()=>tracks.map(track=>{const e=new Element();e.dataset={...track,src:track.audio};e.attrs.href=track.url;return e;});
+const audio = elements['featured-audio'];
+audio.paused = true; audio.ended = false; audio.playCalls = 0; audio.pauseCalls = 0; audio.currentTime=0; audio.duration=NaN;
+audio.load = function(){this.currentTime=0;this.duration=NaN;this.error=null;this.ended=false;this.paused=true;this.emit('emptied');};
+audio.play = function() { this.playCalls++; this.paused = false; this.ended = false; this.emit('playing'); return Promise.resolve(); };
+audio.pause = function() { this.pauseCalls++; this.paused = true; this.emit('pause'); };
+const document = new Element();
+document.hidden = false;
+document.getElementById = id => elements[id];
+document.querySelectorAll = () => [];
+vm.runInNewContext(fs.readFileSync(new URL('../static/app.js', import.meta.url), 'utf8'), {document});
+const toggle = elements.toggle;
+const seek=elements['track-seek'];
+assert.equal(seek.disabled,true,'Seeking must wait for finite duration');
+await elements['next-track'].emit('click');
+assert.equal(elements['track-title'].textContent,tracks[1].title);
+assert.equal(audio.src,tracks[1].audio);
+assert.equal(elements['track-detail'].href,tracks[1].url);
+assert.equal(elements['track-cover'].src,tracks[1].cover);
+assert.equal(elements['track-counter'].textContent,`2/${tracks.length} ${tracks[1].date}`);
+assert.equal(audio.playCalls,0,'Switching while paused should stay paused');
+await elements['previous-track'].emit('click');
+await elements['previous-track'].emit('click');
+assert.equal(audio.src,tracks.at(-1).audio,'Previous from the first track wraps to last');
+await elements['next-track'].emit('click');
+assert.equal(audio.src,tracks[0].audio,'Next from the last track wraps to first');
+audio.duration=245;await audio.emit('loadedmetadata');
+assert.equal(seek.disabled,false);
+assert.equal(elements['track-duration'].textContent,'4:05');
+audio.currentTime=75;await audio.emit('timeupdate');
+assert.equal(elements['track-elapsed'].textContent,'1:15');
+seek.value='120';await seek.emit('input');
+assert.equal(audio.currentTime,120,'Dragging must seek the actual audio');
+assert.equal(elements['track-elapsed'].textContent,'2:00');
+audio.currentTime=119;await audio.emit('timeupdate');
+assert.equal(seek.value,'120','Time events must not move the handle during dragging');
+await seek.emit('change');
+assert.equal(seek.value,'119');
+audio.duration=Infinity;await audio.emit('durationchange');assert.equal(seek.disabled,true);
+audio.duration=245;await audio.emit('durationchange');
+await toggle.emit('click');
+assert.equal(audio.playCalls, 1, 'Play button must call real audio.play()');
+assert.equal(elements.record.dataset.playing, 'true');
+assert.equal(toggle.attrs['aria-label'], '暂停歌曲');
+document.hidden = true; await document.emit('visibilitychange');
+assert.equal(elements.record.style.animationPlayState, 'paused');
+assert.equal(audio.paused, false, 'Background animation pause must not stop the audio');
+document.hidden = false; await document.emit('visibilitychange');
+assert.equal(elements.record.style.animationPlayState, 'running');
+await toggle.emit('click');
+assert.equal(audio.paused, true);
+assert.equal(elements.record.dataset.playing, 'false');
+await toggle.emit('click');
+const playsBeforeSwitch=audio.playCalls;
+await elements['next-track'].emit('click');
+assert.equal(audio.playCalls,playsBeforeSwitch+1,'Switching while playing should play the new track');
+assert.equal(audio.currentTime,0);
+assert.equal(elements['track-elapsed'].textContent,'0:00');
+assert.equal(elements['track-duration'].textContent,'--:--');
+audio.paused = true; audio.ended = true; await audio.emit('ended');
+assert.equal(toggle.attrs['aria-pressed'], 'false');
+assert.match(elements['playback-status'].textContent, /播放结束/);
+audio.play = () => Promise.reject(Object.assign(new Error('blocked'), {name: 'NotAllowedError'}));
+await toggle.emit('click');
+assert.equal(toggle.attrs['aria-pressed'], 'false');
+assert.match(elements['playback-status'].textContent, /再次点击/);
+let rejectPlay;
+audio.play = () => new Promise((_, reject) => { rejectPlay = reject; });
+const pending = toggle.emit('click');
+assert.equal(toggle.attrs['aria-busy'], 'true');
+await toggle.emit('click');
+rejectPlay(Object.assign(new Error('cancelled'), {name: 'AbortError'}));
+await pending;
+assert.equal(toggle.attrs['aria-busy'], 'false');
+assert.equal(elements['playback-status'].textContent, '已暂停', 'Cancelled requests must not overwrite the status');
+audio.paused = false; audio.ended = false; audio.error={code:2}; await audio.emit('error');
+assert.equal(toggle.attrs['aria-pressed'], 'false');
+assert.match(elements['playback-status'].textContent, /音频加载失败/);
+
+console.log('PASS: production playlist, metadata/cover/detail updates, wrap-around, paused/playing switches, duration/seek, real playback, errors and cancelled play');

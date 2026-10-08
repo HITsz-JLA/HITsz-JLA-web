@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ .Description | default .Site.Params.description }}">
+<link rel="canonical" href="{{ .Permalink }}"><link rel="icon" href="{{ "assets/club-logo.webp" | relURL }}">
+<meta property="og:title" content="{{ .Title | default .Site.Title }}"><meta property="og:description" content="{{ .Description | default .Site.Params.description }}"><meta property="og:url" content="{{ .Permalink }}"><meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}"><meta property="og:image" content="{{ "assets/club-logo.webp" | absURL }}">
+{{ range slice "base" "themes" "showa-warm" "natural-textures" "fusion" "homepage" "subpages" "production" }}<link rel="stylesheet" href="{{ printf "%s.css" . | relURL }}">{{ end }}
+<script src="{{ "pages.js" | relURL }}" defer></script>
+{{ if .IsHome }}<script src="{{ "app.js" | relURL }}" defer></script>{{ end }}
+{{ if or .IsHome (eq .Section "participate") }}<link rel="stylesheet" href="{{ "community.css" | relURL }}"><script src="{{ "js/community.js" | relURL }}" defer></script>{{ end }}
+{{ with .Site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ end }}
+</head><body class="showa fusion standalone{{ if not .IsHome }} subpage{{ end }}" id="top" data-search-index="{{ "search-data.json" | relURL }}">
+{{ partial "site/header.html" . }}
+<main class="paper" id="main"><div class="shop-marquee"><span lang="ja">✦ 日本語と音楽の小さなお店 ✦</span><b lang="ja">言葉・音楽・仲間</b><span>SINCE 2018 / HITsz</span></div>
+{{ block "main" . }}{{ end }}
+{{ partial "site/footer.html" . }}</main><a class="back-top" href="#top" aria-label="返回页首">↑</a></body></html>
