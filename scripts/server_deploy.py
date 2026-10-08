@@ -127,8 +127,8 @@ class Deployer:
             raise ValueError("Invalid check_files")
         for name in checks:
             relative_path(name)
-            if name not in files or not name.endswith(".html"):
-                raise ValueError("Health check must name a generated HTML file")
+            if name not in files or not name.endswith((".html", ".json")):
+                raise ValueError("Health check must name a generated HTML or JSON file")
         return data
 
     def plain_file(self, base, name):

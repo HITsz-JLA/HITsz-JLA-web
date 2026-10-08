@@ -69,6 +69,8 @@ try {
 set -eu
 echo '__HASH__  __FILE__' | sha256sum -c -
 python3 '__FILE__' --help >/dev/null
+chmod 700 '__FILE__'
+'__FILE__' --help >/dev/null
 mkdir -p /var/www/HITsz-JLA-web/.deploy/tool-backups
 if [ -e /usr/local/sbin/jla-web-deploy ]; then
   cp -p /usr/local/sbin/jla-web-deploy '/var/www/HITsz-JLA-web/.deploy/tool-backups/__TOKEN__.py'

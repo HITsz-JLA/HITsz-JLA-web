@@ -21,6 +21,12 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
+    def do_GET(self):
+        if getattr(self.server, 'fail_search', False) and self.path.startswith('/search-data.json?'):
+            self.send_error(404)
+            return
+        super().do_GET()
+
 
 class DeploymentTests(unittest.TestCase):
     def setUp(self):
@@ -51,13 +57,15 @@ class DeploymentTests(unittest.TestCase):
         self.thread.join()
         self.temp.cleanup()
 
-    def make_plan(self, after=None):
+    def make_plan(self, after=None, checks=None):
         after = self.after if after is None else after
         self.deployer.begin(ID)
         incoming = self.deployer.paths(ID)[1]
         manifest = {"schema": 1, "commit": "a" * 40, "files": {
             name: {"size": len(content), "sha256": hashlib.sha256(content).hexdigest()}
             for name, content in after.items()}}
+        if checks is not None:
+            manifest["check_files"] = checks
         (incoming / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
         return self.deployer.plan(ID)
 
@@ -102,6 +110,35 @@ class DeploymentTests(unittest.TestCase):
             self.deployer.publish(ID)
         self.assertEqual(self.deployer.current(), self.old)
         self.assertEqual(self.deployer.state(ID)["phase"], "rolled_back")
+
+    def test_json_health_check_publish_and_rollback(self):
+        self.after['search-data.json'] = b'[{"title":"song"}]'
+        self.make_plan(checks=['index.html', 'search-data.json'])
+        state = self.deployer.state(ID)
+        self.assertIn('search-data.json', state['checks'])
+        self.deployer.prepare(ID, self.archive(state))
+        self.deployer.publish(ID)
+        self.assertEqual(self.deployer.state(ID)['phase'], 'published')
+        self.deployer.rollback(ID)
+        self.assertEqual(self.deployer.current(), self.old)
+
+    def test_failed_json_health_check_restores_previous(self):
+        self.after['search-data.json'] = b'[]'
+        plan = self.make_plan(checks=['search-data.json'])
+        self.deployer.prepare(ID, self.archive(plan))
+        # The homepage stays accessible while only the JSON HTTP route fails.
+        self.http.fail_search = True
+        with self.assertRaisesRegex(ValueError, 'previous release restored'):
+            self.deployer.publish(ID)
+        self.assertEqual(self.deployer.current(), self.old)
+
+    def test_health_check_rejects_missing_files(self):
+        with self.assertRaisesRegex(ValueError, 'generated HTML or JSON'):
+            self.make_plan(checks=['missing.json'])
+
+    def test_health_check_rejects_non_document_files(self):
+        with self.assertRaisesRegex(ValueError, 'generated HTML or JSON'):
+            self.make_plan(checks=['music/song.mp3'])
 
     def test_bad_checksum_cannot_change_current(self):
         plan = self.make_plan()
