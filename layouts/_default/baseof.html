@@ -6,6 +6,7 @@
 <meta property="og:title" content="{{ .Title | default .Site.Title }}"><meta property="og:description" content="{{ .Description | default .Site.Params.description }}"><meta property="og:url" content="{{ .Permalink }}"><meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}"><meta property="og:image" content="{{ "assets/club-logo.webp" | absURL }}">
 {{ range slice "base" "themes" "showa-warm" "natural-textures" "fusion" "homepage" "subpages" "production" }}<link rel="stylesheet" href="{{ printf "%s.css" . | relURL }}">{{ end }}
 <script src="{{ "pages.js" | relURL }}" defer></script>
+<script src="{{ "js/visits.js" | relURL }}" defer></script>
 {{ if .IsHome }}<script src="{{ "app.js" | relURL }}" defer></script>{{ end }}
 {{ if or .IsHome (eq .Section "participate") }}<link rel="stylesheet" href="{{ "community.css" | relURL }}"><script src="{{ "js/community.js" | relURL }}" defer></script>{{ end }}
 {{ with .Site.Home.OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ end }}

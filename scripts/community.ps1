@@ -35,6 +35,7 @@ try {
     if (-not (Test-Path -LiteralPath $python)) { throw '请先执行 Setup。' }
     switch ($Action) {
         'Start' {
+            Run $python @('backend/manage.py','migrate','--noinput')
             $site = Join-Path $repo ('.local/community/site/' + (Get-Date -Format 'yyyyMMdd-HHmmss-fff'))
             Run hugo @('--baseURL','http://127.0.0.1:8790/','--destination',$site)
             Run $python @('backend/manage.py','collectstatic','--noinput')

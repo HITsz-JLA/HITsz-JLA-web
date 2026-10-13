@@ -1,0 +1,14 @@
+{% extends "admin/change_list.html" %}
+{% block content %}
+<section class="module" aria-label="访问次数汇总">
+  <h2>当前筛选：{{ visit_total }} 次访问 · {{ visit_page_total }} 个页面</h2>
+  <p>每次页面加载计一次；刷新另计，同一次上报重复请求不重复计数。时间为北京时间。未执行脚本的访问不计入。</p>
+  <p>下面列出当前筛选中访问最多的 100 个页面；可用搜索框输入页面路径或 IP，并按日期筛选。完整逐条记录见下方列表。</p>
+  <div style="max-width:100%;overflow-x:auto">
+  <table style="width:100%">
+    <thead><tr><th scope="col">访问页面</th><th scope="col">次数</th><th scope="col">最近访问</th></tr></thead>
+    <tbody>{% for page in visit_pages %}<tr><td style="overflow-wrap:anywhere;max-width:48em">{{ page.path }}</td><td>{{ page.total }}</td><td>{{ page.latest|date:"Y-m-d H:i:s" }}</td></tr>{% empty %}<tr><td colspan="3">暂无访问记录。</td></tr>{% endfor %}</tbody>
+  </table></div>
+</section>
+{{ block.super }}
+{% endblock %}

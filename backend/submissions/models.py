@@ -3,6 +3,22 @@ from django.conf import settings
 from django.db import models
 
 
+class PageVisit(models.Model):
+    event_id = models.UUIDField(unique=True, editable=False)
+    path = models.CharField('访问页面', max_length=1024, db_index=True)
+    visited_at = models.DateTimeField('访问时间', auto_now_add=True, db_index=True)
+    ip_address = models.GenericIPAddressField('访客 IP', unpack_ipv4=True)
+
+    class Meta:
+        ordering = ['-visited_at', '-pk']
+        verbose_name = '页面访问记录'
+        verbose_name_plural = '访问统计'
+        default_permissions = ('view',)
+
+    def __str__(self):
+        return self.path
+
+
 class Submission(models.Model):
     class Kind(models.TextChoices):
         FEEDBACK = 'feedback', '匿名留言'

@@ -71,6 +71,9 @@ jobs:
       - name: Check playlist player
         run: node scripts/test_player.mjs public
 
+      - name: Check private page visit tracking
+        run: node scripts/test_visits.mjs
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

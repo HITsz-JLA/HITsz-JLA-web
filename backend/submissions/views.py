@@ -33,7 +33,8 @@ def csrf(request):
 def health(request):
     with connection.cursor() as cursor:
         cursor.execute('SELECT 1')
-    return JsonResponse({'ok': True, 'service': 'jla-community', 'api_version': 1})
+    return JsonResponse({'ok': True, 'service': 'jla-community', 'api_version': 1,
+                         'features': ['page-visits-v1']})
 
 
 @require_POST

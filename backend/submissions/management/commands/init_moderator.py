@@ -26,6 +26,7 @@ class Command(BaseCommand):
         permissions = Permission.objects.filter(content_type__app_label='submissions', codename__in=[
             'view_submission', 'change_submission', 'moderate_submission',
             'view_notification', 'change_notification', 'view_moderationlog',
+            'view_pagevisit',
         ])
         group.permissions.set(permissions)
         password = secrets.token_urlsafe(24)

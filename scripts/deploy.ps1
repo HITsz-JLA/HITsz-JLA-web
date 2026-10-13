@@ -51,9 +51,12 @@ function Assert-CommunityReady {
         if ($health.ok -ne $true -or $health.service -ne 'jla-community' -or $health.api_version -ne 1) {
             throw 'Unexpected community API response.'
         }
+        if (-not $health.PSObject.Properties['features'] -or 'page-visits-v1' -notin $health.features) {
+            throw 'Backend update required for page visit statistics.'
+        }
     }
     catch {
-        throw 'Community backend is not ready. Follow scripts/COMMUNITY.md to install the backend and Nginx route before publishing the frontend.'
+        throw 'Community backend is not ready or needs the page-visits update. Follow scripts/COMMUNITY.md to install/update the backend before publishing the frontend.'
     }
 }
 

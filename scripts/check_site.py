@@ -54,8 +54,11 @@ class Page(HTMLParser):
         self.ids = []
         self.tracks = []
         self.forms = []
+        self.visit_scripts = 0
     def handle_starttag(self, tag, attributes):
         attributes = dict(attributes)
+        if tag == 'script' and attributes.get('src', '').endswith('/js/visits.js'):
+            self.visit_scripts += 1
         if 'id' in attributes:
             self.ids.append(attributes['id'])
         if 'data-title' in attributes and 'data-src' in attributes:
@@ -81,6 +84,8 @@ for name, file in files.items():
         page = Page(name)
         page.feed(text)
         pages[name] = page
+        if 'main' in page.ids and page.visit_scripts != 1:
+            errors.append(name + ': page must load exactly one private visit script')
         duplicates = [key for key, count in Counter(page.ids).items() if count > 1]
         if duplicates:
             errors.append(f'{name}: duplicate IDs {duplicates}')

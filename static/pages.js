@@ -1,5 +1,8 @@
 (() => {
 'use strict';
+// Font loading and browser text scaling can change the fixed header's height.
+const header=document.querySelector('.site-header');
+if(header){const reserveHeader=()=>document.documentElement.style.setProperty('--nav-space',`${Math.ceil(header.getBoundingClientRect().height)}px`);reserveHeader();if(typeof ResizeObserver!=='undefined')new ResizeObserver(reserveHeader).observe(header);else window.addEventListener('resize',reserveHeader);document.fonts?.ready.then(reserveHeader);}
 const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>[...p.querySelectorAll(s)];
 for(const root of $$('[data-filter-list]')){
  const items=$$('.filter-item',root),query=$('[data-filter-query]',root),year=$('[data-filter-year]',root),tabs=$$('[data-category-filter]',root);let category='',page=0;const size=Number(root.dataset.pageSize||6);

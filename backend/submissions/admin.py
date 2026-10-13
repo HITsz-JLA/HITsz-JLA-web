@@ -5,9 +5,44 @@ import re
 import zipfile
 from django.contrib import admin, messages
 from django.http import HttpResponse
+from django.db.models import Count, Max
 from django.utils import timezone
 from .models import ModerationLog, Notification, Submission
 from .services import moderate
+from .models import PageVisit
+
+
+@admin.register(PageVisit)
+class PageVisitAdmin(admin.ModelAdmin):
+    list_display = ['path', 'visited_at', 'ip_address']
+    list_filter = ['visited_at']
+    search_fields = ['path', 'ip_address']
+    date_hierarchy = 'visited_at'
+    list_per_page = 100
+    readonly_fields = ['event_id', 'path', 'visited_at', 'ip_address']
+    actions = None
+    change_list_template = 'admin/submissions/pagevisit/change_list.html'
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        response = super().changelist_view(request, extra_context)
+        if hasattr(response, 'context_data') and response.context_data and 'cl' in response.context_data:
+            visits = response.context_data['cl'].queryset
+            response.context_data.update(
+                visit_total=visits.count(),
+                visit_page_total=visits.order_by().values('path').distinct().count(),
+                visit_pages=visits.order_by().values('path').annotate(
+                    total=Count('pk'), latest=Max('visited_at')).order_by('-total', 'path')[:100],
+            )
+        return response
 
 
 def escape_markdown(value):

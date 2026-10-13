@@ -1,5 +1,41 @@
 # 留言、每周一曲投稿与邮件审核
 
+## 2026-10：页面访问统计更新
+
+每个 Hugo 正文页面加载后，在首次可见时向同域 `/community/api/visits/` 上报一次。刷新页面另计一次，标签页切换不重复计次，同一次请求编号重复提交不重复计数。纯跳转页面不单独计次，统计其最终目标页面。独立部署的小游戏不属于 Hugo 页面，暂不纳入。
+
+后台入口：`https://hitszjla.club/community/admin/submissions/pagevisit/`（登录后在首页点击“访问统计”）。后台显示按页面汇总的次数、最近访问时间及逐条记录，可按日期、路径和 IP 筛选。时间为北京时间，IP 支持 IPv4/IPv6；使用 Nginx 覆盖的 `X-Real-IP`，不接受客户端传入的 IP 字段。当前 Nginx 没有可信 CDN 实际 IP 还原设置，未来接入 CDN 时需单独配置可信代理，否则记录的是 CDN 出口地址。
+
+访问记录保存在现有 SQLite 数据库中，随现有数据库备份保存，不进入 Git 或静态发布目录。现有“社团内容审核员”组在数据库迁移后自动获得只读统计权限；不提供公开的统计查询接口，不在页面展示计数、IP 或时间。不记录查询参数、锚点、Cookie、搜索词或来源网址。
+
+这是浏览器页面加载次数（PV），不是独立访客数；禁用 JavaScript、拦截统计请求、网络失败或限流的访问不会计入。每 IP 每分钟最多接受 120 次上报，不影响正常阅读与留言接口。统计数据目前不自动删除；随着访问量增长，应结合现有备份与磁盘空间安排保留期限。
+
+**首次上线此更新必须先更新后端，再发布静态页面。仅执行 `deploy.ps1` 不会创建统计表。** 发布脚本会检查健康接口中的 `features` 包含 `page-visits-v1`；旧后端会阻止发布，避免前端上线后悄悄漏计。
+
+提交并推送本次修改后，在本机 PowerShell 执行：
+
+```powershell
+cd D:\HITSZ-JLA\HITsz-JLA-web
+New-Item -ItemType Directory -Force .local/community | Out-Null
+git archive --format=tar.gz --output=.local/community/backend.tar.gz HEAD backend
+$sshOptions = @('-o','BatchMode=yes','-o','StrictHostKeyChecking=yes','-o','HostKeyAlias=111.228.7.90')
+$upload = '/root/jla-community-upload/visits-' + (Get-Date -Format 'yyyyMMdd-HHmmss')
+ssh @sshOptions root@hitszjla.club "install -d -m 700 $upload"
+scp @sshOptions .local/community/backend.tar.gz "root@hitszjla.club:${upload}/backend.tar.gz"
+ssh @sshOptions root@hitszjla.club "cd $upload && tar -xzf backend.tar.gz && bash backend/deploy/install.sh"
+```
+
+安装脚本会先备份生产数据库、迁移新表并重启后端与邮件服务。**不要重新导出或上传邮箱配置，不要上传本地数据库，也不需要重建管理员或修改 Nginx。** 上述每条命令成功后再执行下一条。
+
+确认后端返回新功能，再发布前端：
+
+```powershell
+Invoke-RestMethod https://hitszjla.club/community/api/health/ | ConvertTo-Json -Depth 3
+pwsh -NoProfile -File .\scripts\deploy.ps1
+```
+
+上线后打开首页与一篇文章，刷新后台“访问统计”，确认对应路径、时间、IP 与次数增加。统计测试不会触发邮件。以后仅改页面内容时，仍使用原静态发布命令即可。
+
 ## 已实现的行为
 
 - 正式候选版沿用新版昭和喫茶风格导航。“关于&加入”合并社团介绍和加入方式，“留言&投稿”位于 `/participate/`；首页留言板展示最近三条公开留言，并提供真实留言、投稿弹窗。窄屏导航在品牌下方显示，入口可横向滚动。
