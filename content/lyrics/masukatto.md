@@ -5,7 +5,7 @@ draft: false
 type: lyrics
 ---
 
-![专辑封面](/image/Masukatto.jpg)
+![专辑封面](/image/masukatto.jpg)
 
 <!--more-->
 
