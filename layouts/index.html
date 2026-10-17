@@ -1,13 +1,120 @@
 {{ define "main" }}
-<div class="layout"><aside class="side"><section class="card about"><img class="deco about-lantern" src="{{ "assets/fusion/lantern.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><span class="open-stamp" aria-hidden="true">本日<br>開店</span><img class="logo" src="{{ "assets/club-logo.webp" | relURL }}" alt="日语社标识"><span class="pill">❖ 本日も、欢迎来玩！</span><h2>はじめまして！</h2><p class="muted">HITsz 日本語サークル</p><div class="body"><p>从一句「こんにちは」开始，<br>一起发现语言与文化的乐趣。</p><p>成立于 2018 年。KTV、观影、讲座、日语学习……零基础也欢迎！</p></div><a class="primary" href="{{ "about/#join" | relURL }}">关于 &amp; 加入 ↗</a></section>
-{{ partial "site/home-news.html" . }}
-<section class="card dept"><span class="dept-stamp" aria-hidden="true">同好募集中</span><h2>找到你的同好</h2><p><b>文学部</b>文学与轻小说</p><p><b style="background:#fce5ed">二偶部</b>二次元偶像</p><p><b style="background:#eae2fa">东方部</b>东方 Project</p></section><section class="card social"><span class="social-postmark" aria-hidden="true">HITsz<br>好きなもの、<br>つながる。</span><img class="deco social-daruma" src="{{ "assets/showa/daruma.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><div class="heading"><h2>来串门吧</h2><small>お友達</small></div><div class="account"><a href="https://space.bilibili.com/3632313818679469">bilibili ↗</a><span>hitsz日语社</span></div><div class="account"><a href="https://www.xiaohongshu.com/user/profile/68b8185700000000190208a8">小红书 ↗</a><span>hitsz日语社</span></div><div class="account"><strong>微信公众号</strong><span>hit日语社 sz</span></div></section></aside>
-<div class="content"><section class="card hero"><div class="wave-scene"><img src="{{ "assets/great-wave.jpg" | relURL }}" alt="葛饰北斋《神奈川冲浪里》局部"></div><div class="awning" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="hero-copy"><span class="kicker">日本語 × 音楽 × 好朋友</span><span class="hero-folio" aria-hidden="true">日常の浪漫</span><h1>把喜欢，<br>写进我们的日常。</h1><p>在浪花与唱片之间，<br>收藏一首歌、一个故事，和每一次相遇。</p><div class="tags"><span>零基础 OK</span><span>一緒に、好きなことを。</span></div><div class="hero-caption" aria-hidden="true">❖  浪漫和喫茶  /  ROMAN KISSA  ❖</div></div><div class="fusion-collage" aria-hidden="true"><img class="hero-torii" src="{{ "assets/shinto/torii.svg" | relURL }}" alt="" aria-hidden="true"><span class="sun-seal">一期<br>一会</span><img class="deco hero-crane" src="{{ "assets/fusion/crane.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><img class="deco hero-shop-sign" src="{{ "assets/showa/shop-sign.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><img class="deco hero-club-seal" src="{{ "assets/showa/club-seal.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><img class="deco hero-fan" src="{{ "assets/showa/fan.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><img class="deco hero-kiku" src="{{ "assets/fusion/chrysanthemum.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><span class="hanging-ticket">好 き を 集 め て</span><span class="hero-star">✦</span></div><div class="hero-bottom"><span>日々是好日 · 每一天，都有小小的喜欢</span><span>HITsz 日本語倶楽部</span></div></section>
-<div class="featured">{{ partial "site/player.html" . }}
-{{ partial "site/home-event.html" . }}</div><div class="study">{{ partial "site/home-reading.html" . }}{{ partial "site/home-grammar.html" . }}</div>
-</div></div><section class="card guestboard community-page" data-community-page="home" aria-labelledby="guestbook-title"><div class="board-title"><img class="deco board-flower" src="{{ "assets/fusion/camellia.svg" | relURL }}" alt="" aria-hidden="true"><img class="deco board-postcard" src="{{ "assets/showa/postcard.svg" | relURL }}" alt="" aria-hidden="true"><div><h2 id="guestbook-title">留一张小纸条</h2><p>一首歌、一篇故事，或是一句「你好」。把喜欢写下来，让我们在这里相遇。</p></div><span>GUESTBOOK</span></div><div class="board-columns"><div class="wall">{{ partial "site/community-wall.html" . }}<a class="text-link" href="{{ "/participate/" | relURL }}">查看全部留言 →</a></div><section class="composer" aria-label="留言与歌曲投稿"><div class="compose-intro"><h3>把喜欢，分享给大家。</h3></div>{{ partial "site/community-actions.html" . }}<p class="community-footnote">留言审核通过后公开；歌曲投稿审核后进入候选曲目。</p></section></div>{{ partial "site/community-dialogs.html" . }}</section>
-<div class="shop-closing" aria-hidden="true"><img class="home-stone-lantern" src="{{ "assets/shinto/lantern.svg" | relURL }}" alt="" aria-hidden="true"><img class="deco closing-crane" src="{{ "assets/fusion/crane.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><img class="deco closing-kiku" src="{{ "assets/fusion/chrysanthemum.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><img class="deco closing-coffee" src="{{ "assets/showa/coffee.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"><span>また、ここで会いましょう。</span><small>下次，也在这里相遇。</small></div>
+<div class="layout">
 
+  <aside class="side">
 
+    <section class="card about">
+      <img class="logo" src="{{ "assets/club-logo.webp" | relURL }}" alt="日语社标识">
+      <span class="pill">❖ HITsz 日本語サークル</span>
+      <h2>いらっしゃいませ！</h2>
+      <p>欢迎！</p>
+      <a class="primary" href="{{ "about/#join" | relURL }}">关于社团 &amp; 加入我们 ↗</a>
+      <div class="account">
+        <a href="https://space.bilibili.com/3632313818679469">bilibili ↗</a>
+        <span>hitsz日语社</span>
+      </div>
+      <div class="account">
+        <a href="https://www.xiaohongshu.com/user/profile/68b8185700000000190208a8">小红书 ↗</a>
+        <span>hitsz日语社</span>
+      </div>
+      <div class="account">
+        <strong>微信公众号</strong>
+        <span>hit日语社 sz</span>
+      </div>
+    </section>
 
+    <section class="card dept-intro">
+      <div class="heading">
+        <h2>找到你的同好</h2>
+      </div>
+      <div class="dept-list">
+        <article class="dept-item">
+          <p class="dept-name"><b>01</b>文学部</p>
+        </article>
+        <article class="dept-item">
+          <p class="dept-name"><b>02</b>二偶部</p>
+        </article>
+        <article class="dept-item">
+          <p class="dept-name"><b>03</b>东方部</p>
+        </article>
+      </div>
+    </section>
+
+    {{ partial "site/player.html" . }}
+
+  </aside>
+
+  <div class="content">
+
+    <section class="card hero">
+      <div class="wave-scene">
+        <img src="{{ "assets/great-wave.jpg" | relURL }}" alt="葛饰北斋《神奈川冲浪里》局部">
+      </div>
+      <!-- 暖帘 30 片：.awning 是 flex 容器，此处换行不会产生多余空格 -->
+      <div class="awning" aria-hidden="true">{{ range seq 30 }}<i></i>{{ end }}</div>
+      <div class="hero-copy">
+        <h2>简介</h2>
+        <img class="deco about-lantern" src="{{ "assets/fusion/lantern.svg" | relURL }}" alt="" aria-hidden="true" draggable="false"style="left:auto;right:12px;top:17px;">
+        <h1 style="align-self:center">HITSZ 日语社</h1> 
+        <h3 style="text-align:left;width: 100%;">成立于2018年，是一个热爱日本语言与文化的学生社团。我们定期举办 KTV、观影、讲座、日语学习等活动，也欢迎零基础的同学加入！</h3>
+      </div>
+      <div class="fusion-collage" aria-hidden="true">
+        <img class="hero-torii" src="{{ "assets/shinto/torii.svg" | relURL }}" alt="" aria-hidden="true">
+        <span class="sun-seal">一期<br>一会</span>
+        <img class="deco hero-crane" src="{{ "assets/fusion/crane.svg" | relURL }}" alt="" aria-hidden="true" draggable="false">
+        <img class="deco hero-fan" src="{{ "assets/showa/fan.svg" | relURL }}" alt="" aria-hidden="true" draggable="false">
+        <img class="deco hero-kiku" src="{{ "assets/fusion/chrysanthemum.svg" | relURL }}" alt="" aria-hidden="true" draggable="false">
+        <span class="hero-star">✦</span>
+      </div>
+    </section>
+
+    {{ partial "site/home-news.html" . }}
+
+    <div class="featured">
+      {{ partial "site/home-event.html" . }}
+
+      <div class="study">
+        {{ partial "site/home-reading.html" . }}
+        {{ partial "site/home-grammar.html" . }}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<section class="card guestboard community-page" data-community-page="home" aria-labelledby="guestbook-title">
+  <div class="board-title">
+    <img class="deco board-flower" src="{{ "assets/fusion/camellia.svg" | relURL }}" alt="" aria-hidden="true">
+    <img class="deco board-postcard" src="{{ "assets/showa/postcard.svg" | relURL }}" alt="" aria-hidden="true">
+    <div>
+      <h2 id="guestbook-title">留一张小纸条</h2>
+      <p>一首歌、一篇故事，或是一句「你好」。把喜欢写下来，让我们在这里相遇。</p>
+    </div>
+    <span>GUESTBOOK</span>
+  </div>
+  <div class="board-columns">
+    <div class="wall">
+      {{ partial "site/community-wall.html" . }}
+      <a class="text-link" href="{{ "/participate/" | relURL }}">查看全部留言 →</a>
+    </div>
+    <section class="composer" aria-label="留言与歌曲投稿">
+      <div class="compose-intro">
+        <h3>把喜欢，分享给大家。</h3>
+      </div>
+      {{ partial "site/community-actions.html" . }}
+      <p class="community-footnote">留言审核通过后公开；歌曲投稿审核后进入候选曲目。</p>
+    </section>
+  </div>
+  {{ partial "site/community-dialogs.html" . }}
+</section>
+
+<div class="shop-closing" aria-hidden="true">
+  <img class="home-stone-lantern" src="{{ "assets/shinto/lantern.svg" | relURL }}" alt="" aria-hidden="true">
+  <img class="deco closing-crane" src="{{ "assets/fusion/crane.svg" | relURL }}" alt="" aria-hidden="true" draggable="false">
+  <img class="deco closing-kiku" src="{{ "assets/fusion/chrysanthemum.svg" | relURL }}" alt="" aria-hidden="true" draggable="false">
+  <img class="deco closing-coffee" src="{{ "assets/showa/coffee.svg" | relURL }}" alt="" aria-hidden="true" draggable="false">
+  <span>また、ここで会いましょう。</span>
+  <small>下次，也在这里相遇。</small>
+</div>
 {{ end }}

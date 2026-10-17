@@ -156,7 +156,6 @@
       if (currentPage === 0) list.replaceChildren();
       (homeLimit ? data.items.slice(0, homeLimit) : data.items).forEach(item => list.append(renderNote(item)));
       if (!data.total) list.append(node('div', 'community-empty', '这里还没有公开留言。欢迎分享你的想法。'));
-      document.getElementById('public-count').textContent = `${data.total} 条公开留言`;
       currentPage = data.page;
       next.hidden = homeLimit > 0 || !data.has_next;
     } catch {
