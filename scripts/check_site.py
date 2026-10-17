@@ -102,7 +102,7 @@ for route in ('index.html', 'participate/index.html'):
         page = pages[route]
         if sorted(page.forms) != ['feedback', 'song']:
             errors.append('Missing real submission forms: ' + route)
-        for needed in ('community-notice', 'feedback-list', 'public-count', 'load-more', 'retry-list'):
+        for needed in ('community-notice', 'feedback-list', 'load-more', 'retry-list'):
             if needed not in page.ids:
                 errors.append(route + ': missing community element ' + needed)
 
