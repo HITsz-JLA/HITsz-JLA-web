@@ -1,14 +1,15 @@
 /* Production integration: keep dialogs independent of the decorative header. */
 .standalone .notice-body{min-width:0}
-.standalone .notice-body--illustrated{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);align-items:center;gap:28px}
+.standalone .notice-body--illustrated{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);align-items:stretch;gap:28px}
 .standalone .notice-copy{min-width:0;display:flex;flex-direction:column;gap:16px}
 .standalone .notice-copy .summary{margin-bottom:0}
-.standalone .notice-image{display:block;min-width:0;padding:8px;border:3px double #be8669;background:#fff0d8;box-shadow:3px 4px 0 #a7754926}
-.standalone .notice-image img{display:block;width:100%;height:220px;object-fit:contain;background:#f3ddc4}
+.standalone .notice-body--illustrated .notice-copy>p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* The text determines the row height; the photo only fills its right-hand cell. */
+.standalone .notice-image{position:relative;display:block;min-width:0;min-height:0;border:3px double #be8669;background:#fff0d8;box-shadow:3px 4px 0 #a7754926}
+.standalone .notice-image img{position:absolute;inset:6px;display:block;width:calc(100% - 12px);height:calc(100% - 12px);object-fit:contain;background:#f3ddc4}
 @media(max-width:600px){
-  .standalone .notice-body--illustrated{grid-template-columns:minmax(0,1fr);gap:20px}
-  .standalone .notice-image{width:100%;max-width:360px;justify-self:center}
-  .standalone .notice-image img{height:auto;max-height:280px;object-fit:contain}
+  .standalone .notice-body--illustrated{gap:12px}
+  .standalone .notice-copy .notice-links{display:flex;flex-wrap:wrap;gap:8px 12px}
 }
 .standalone .footer{flex-wrap:wrap;gap:12px;line-height:1.8}
 .standalone .footer .legal{flex-basis:100%;text-align:center;font-size:11px}
