@@ -4,6 +4,21 @@
 const header=document.querySelector('.site-header');
 if(header){const reserveHeader=()=>document.documentElement.style.setProperty('--nav-space',`${Math.ceil(header.getBoundingClientRect().height)}px`);reserveHeader();if(typeof ResizeObserver!=='undefined')new ResizeObserver(reserveHeader).observe(header);else window.addEventListener('resize',reserveHeader);document.fonts?.ready.then(reserveHeader);}
 const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>[...p.querySelectorAll(s)];
+// Fit the frame to the photo's natural ratio at the text-defined row height.
+for(const frame of $$('.notice-image')){
+ const image=$('img',frame);
+ const fit=()=>{
+  if(!image.naturalWidth||!image.naturalHeight)return;
+  const style=getComputedStyle(frame),photoStyle=getComputedStyle(image);
+  const inset=parseFloat(style.borderTopWidth)+parseFloat(style.borderBottomWidth)+parseFloat(photoStyle.top)+parseFloat(photoStyle.bottom);
+  const width=Math.max(0,frame.getBoundingClientRect().height-inset)*image.naturalWidth/image.naturalHeight+inset;
+  frame.style.setProperty('--notice-image-width',`${width}px`);
+ };
+ image.addEventListener('load',fit);fit();
+ if(typeof ResizeObserver!=='undefined')new ResizeObserver(fit).observe(frame);
+ else window.addEventListener('resize',fit);
+ document.fonts?.ready.then(fit);
+}
 for(const root of $$('[data-filter-list]')){
  const items=$$('.filter-item',root),query=$('[data-filter-query]',root),year=$('[data-filter-year]',root),tabs=$$('[data-category-filter]',root);let category='',page=0;const size=Number(root.dataset.pageSize||6);
  function render(){const term=query.value.trim().toLocaleLowerCase();const matches=items.filter(el=>(!category||el.dataset.category===category)&&(!year.value||el.dataset.year===year.value)&&(!term||el.dataset.search.toLocaleLowerCase().includes(term)));const total=Math.max(1,Math.ceil(matches.length/size));page=Math.min(page,total-1);items.forEach(el=>el.hidden=true);matches.slice(page*size,(page+1)*size).forEach(el=>el.hidden=false);$('[data-result-count]',root).textContent=`找到 ${matches.length} 篇内容`;$('[data-filter-empty]',root).hidden=matches.length>0;$('[data-page-label]',root).textContent=`${page+1} / ${total}`;$('[data-prev]',root).disabled=page===0;$('[data-next]',root).disabled=page>=total-1;$('.pagination',root).hidden=matches.length<=size;}
