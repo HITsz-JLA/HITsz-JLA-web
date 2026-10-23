@@ -1,0 +1,6 @@
+git switch main
+git pull --ff-only origin main
+git submodule update --init --recursive
+
+git status
+pwsh -NoProfile -File .\scripts\deploy.ps1
