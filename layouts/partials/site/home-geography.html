@@ -1,0 +1,19 @@
+<section class="card home-geography" aria-labelledby="geography-title">
+  <div class="heading">
+    <h2 id="geography-title">每周日本地理</h2>
+    <small lang="ja">日本を歩く</small>
+  </div>
+  {{ range first 1 (where .Site.RegularPages "Section" "geography").ByDate.Reverse }}
+  {{ $meta := partial "site/metadata.html" . }}
+  {{ $articleURL := .RelPermalink }}
+  <div class="geography-spread">
+    {{ with $meta.cover }}<a class="geography-cover" href="{{ $articleURL }}" aria-label="阅读本期日本地理"><img src="{{ . | relURL }}" alt="本期日本地理配图" loading="lazy" decoding="async"></a>{{ end }}
+    <div class="geography-copy">
+      <time class="eyebrow" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }} / 地理手帖</time>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Summary | plainify | htmlUnescape | truncate 130 }}</p>
+      <div class="geography-links"><a href="{{ .RelPermalink }}">阅读本期 →</a><a href="{{ "/geography/" | relURL }}">往期日本地理 ↗</a></div>
+    </div>
+  </div>
+  {{ else }}<p>第一期日本地理即将与大家见面。</p>{{ end }}
+</section>

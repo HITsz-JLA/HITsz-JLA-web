@@ -4,8 +4,8 @@
   <div class="nav-inner">
     <a class="brand" href="{{ "/" | relURL }}"><img src="{{ "assets/club-logo.webp" | relURL }}" alt="日语社标识"><span class="brand-words">HITsz 日语社</span></a>
     <nav aria-label="主导航">
-      {{ range slice (slice "home" "首页") (slice "about" "关于 & 加入") (slice "news" "公告") (slice "events" "活动") (slice "lyrics" "每周一曲") (slice "readings" "每周一文") (slice "grammar" "每周文法") (slice "participate" "留言 & 投稿") }}{{ $key := index . 0 }}{{ $url := printf "/%s/" $key }}{{ if eq $key "home" }}{{ $url = "/" }}{{ end }}<a href="{{ $url | relURL }}"{{ if eq $key $active }} class="active" aria-current="page"{{ end }}>{{ index . 1 }}</a>{{ end }}
+      {{ range slice (slice "home" "首页") (slice "about" "关于 & 加入") (slice "news" "公告") (slice "events" "活动") (slice "lyrics" "每周一曲") (slice "readings" "每周一文") (slice "grammar" "每周文法") (slice "geography" "每周日本地理") (slice "participate" "留言 & 投稿") }}{{ $key := index . 0 }}{{ $url := printf "/%s/" $key }}{{ if eq $key "home" }}{{ $url = "/" }}{{ end }}<a href="{{ $url | relURL }}"{{ if eq $key $active }} class="active" aria-current="page"{{ end }}>{{ index . 1 }}</a>{{ end }}
     </nav>
     <a class="search" href="{{ "/search/" | relURL }}"{{ if eq $active "search" }} aria-current="page"{{ end }}>⌕ 搜索</a>
   </div>
-</header>
+</header>
