@@ -20,7 +20,11 @@ $sshOptions = @('-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20',
 function Invoke-Checked {
     param([string]$File, [string[]]$Arguments)
     $result = & $File @Arguments
-    if ($LASTEXITCODE -ne 0) { throw "$File failed (exit $LASTEXITCODE)." }
+    if ($LASTEXITCODE -ne 0) {
+        $exitCode = $LASTEXITCODE
+        $result | Out-Host
+        throw "$File failed (exit $exitCode)."
+    }
     return $result
 }
 

@@ -2,7 +2,7 @@
 title: "日本地理·第二期｜日本铁路交通——概况与新干线篇"
 date: 2026-11-05
 draft: true
-summary: "从JR、私铁与在来线出发，沿新干线认识日本主要城市之间的联系，分清线路、列车名称与车辆型号。
+summary: "从JR、私铁与在来线出发，沿新干线认识日本主要城市之间的联系，分清线路、列车名称与车辆型号。"
 ---
 
 © Kosmischer 〒 kosmischer.asatsuki@gmail.com
