@@ -42,6 +42,9 @@ htmlcov/
 /backend/backups/
 /backend/logs/
 
+# Weekly grammar PDF samples and generated handouts: local reference only.
+/example/
+
 # OS metadata.
 .DS_Store
 Thumbs.db
